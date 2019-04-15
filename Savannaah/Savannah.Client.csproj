@@ -7,6 +7,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Savannaah.Animals\Savannah.Animals.csproj" />
+    <ProjectReference Include="..\Savannah.GameCoordinator\Savannah.GameCoordinator.csproj" />
+    <ProjectReference Include="..\Savannah.GameField\Savannah.FieldOfGame.csproj" />
+    <ProjectReference Include="..\Savannah.GameManager\Savannah.Common.csproj" />
+    <ProjectReference Include="..\Savannah.InputAndOutput\Savannah.InputAndOutput.csproj" />
+    <ProjectReference Include="..\Savannah.PositionOnField\Savannah.PositionOnField.csproj" />
   </ItemGroup>
 
 </Project>

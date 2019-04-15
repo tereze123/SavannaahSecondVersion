@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Savannah.GameCoordinator;
+using Savannah.InputAndOutput;
+using System;
 
 namespace Savannaah
 {
@@ -6,7 +8,11 @@ namespace Savannaah
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            UserInput userInput = new UserInput();
+            GameFieldDrawer gameFieldDrawer = new GameFieldDrawer();
+
+            GameManager gameManager = new GameManager(userInput, gameFieldDrawer);
+            gameManager.Start();
         }
     }
 }

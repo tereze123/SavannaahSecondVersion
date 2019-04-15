@@ -1,6 +1,7 @@
 ﻿using Savannaah.Animals;
-using Savannah.PositionOnField;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Savannah.FieldOfGame
 {
@@ -8,12 +9,12 @@ namespace Savannah.FieldOfGame
     {
         public Animal[,] GameState { get; set; }
 
-        private readonly PositionOnFieldValidation positionOnFieldValidation;
+        private Random random;
 
-        public GameField(PositionOnFieldValidation positionOnFieldValidation)
+        public GameField()
         {
             GameState = new Animal[this.GetGameFieldSize(), this.GetGameFieldSize()];
-            this.positionOnFieldValidation = positionOnFieldValidation;
+            random = new Random();
         }
 
         public Animal[,] CreateNewGameState()
@@ -24,6 +25,13 @@ namespace Savannah.FieldOfGame
         public int GetGameFieldSize()
         {
             return 10;
+        }
+
+        public PositionOnField.PositionOnField GetRandomAndFreePositionOnField()
+        {
+            var freePositionList = this.GetAllFreePositionsOnField();
+            var randomPositionNumberFromTheList = random.Next(0, freePositionList.Count);
+            return freePositionList.ElementAt(randomPositionNumberFromTheList);
         }
 
         public List<PositionOnField.PositionOnField> GetAllFreePositionsOnField()

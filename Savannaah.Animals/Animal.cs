@@ -8,10 +8,12 @@ namespace Savannaah.Animals
     {
         private readonly PositionOnFieldValidation positionOnFieldValidation;
 
-        public Animal(PositionOnFieldValidation positionOnFieldValidation)
+        public Animal()
         {
-            this.positionOnFieldValidation = positionOnFieldValidation;
+            this.positionOnFieldValidation = new PositionOnFieldValidation(new Savannah.Common.Configuration());
         }
+
+
         public string Name { get; set; }
 
         public int VisionRange { get; set; }
@@ -51,9 +53,10 @@ namespace Savannaah.Animals
                 {
                     continue;
                 }
-                if (CheckIfThisPositionIsFree(initialGeneration, rowPosition + row, columnPosition)
+                if (!(positionOnFieldValidation.IsOutOfBounds(rowPosition + row, columnPosition))
+                    && CheckIfThisPositionIsFree(initialGeneration, rowPosition + row, columnPosition)
                     && CheckIfThisPositionIsFree(nextGenerationArray, rowPosition + row, columnPosition)
-                    && !(positionOnFieldValidation.IsOutOfBounds(rowPosition + row, columnPosition)))
+                    )
                 {
                     freePositionList.Add(new PositionOnField(rowPosition + row, columnPosition));
                 }
@@ -65,9 +68,10 @@ namespace Savannaah.Animals
                 {
                     continue;
                 }
-                if (CheckIfThisPositionIsFree(initialGeneration, rowPosition, columnPosition + column)
+                if (!(positionOnFieldValidation.IsOutOfBounds(rowPosition, columnPosition + column))
+                    && CheckIfThisPositionIsFree(initialGeneration, rowPosition, columnPosition + column)
                     && CheckIfThisPositionIsFree(nextGenerationArray, rowPosition, columnPosition + column)
-                    && !(positionOnFieldValidation.IsOutOfBounds(rowPosition, columnPosition + column)))
+                   )
                 {
                     freePositionList.Add(new PositionOnField(rowPosition, columnPosition + column));
                 }

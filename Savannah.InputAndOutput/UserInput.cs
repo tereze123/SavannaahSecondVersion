@@ -12,12 +12,11 @@ namespace Savannah.InputAndOutput
             {
                 consoleKeyInfo = Console.ReadKey(true);
                 if (consoleKeyInfo.Key == ConsoleKey.A) { return "A"; }
-                else if (consoleKeyInfo.Key == ConsoleKey.L) { return "L"; }
             } while (consoleKeyInfo.Key != ConsoleKey.Escape);
             return "ESC";
         }
 
-        public bool IsKeYPressed()
+        public bool IsKeyPressed()
         {
             if (Console.KeyAvailable)
             {
