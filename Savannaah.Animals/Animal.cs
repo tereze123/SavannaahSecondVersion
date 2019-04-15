@@ -33,10 +33,10 @@ namespace Savannaah.Animals
                 for (int columnsInVisionRange = VisionRange * -1; columnsInVisionRange <= VisionRange; columnsInVisionRange++)
                 {
                     var rowToCheck = rowsInVisionRange + rowPosition;
-                    var columnToCheck = columnPosition + columnPosition;
+                    var columnToCheck = columnsInVisionRange + columnPosition;
                     if (RowAndColumnAreBiggerThanZero(rowToCheck, columnToCheck))
                     {
-                        if (ThisCellIsValidAndContainsEnemy(initialGeneration, rowToCheck, columnPosition))
+                        if (ThisCellIsValidAndContainsEnemy(initialGeneration, rowToCheck, columnToCheck))
                         {
                             positionOnField.ColumnPosition = columnPosition + columnsInVisionRange;
                             positionOnField.RowPosition = rowPosition + columnsInVisionRange;
