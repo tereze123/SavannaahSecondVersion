@@ -8,7 +8,7 @@ namespace Savannah.Animals
         public Antelope():base()
         {
             this.Name = "A";
-            this.VisionRange = 2;
+            this.VisionRange = 10;
             this.EnemiesName = "L";
         }
     }

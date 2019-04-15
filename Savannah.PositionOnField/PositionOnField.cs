@@ -16,5 +16,7 @@
         public int RowPosition { get; set; }
 
         public int ColumnPosition { get; set; }
+
+        public bool IsEnemyInViewRange;
     }
 }

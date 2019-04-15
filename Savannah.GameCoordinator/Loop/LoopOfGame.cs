@@ -26,16 +26,27 @@ namespace Savannah.GameCoordinator.Loop
                 {
                     if (gameField.GameState[row, column] != null)
                     {
-                        if(gameField.GameState[row, column].IsEnemyInVisionRange(gameField.GameState,row,column))
-                        {
-                            throw new System.Exception();
-                        }
-                        gameField.GameState[row, column].PeaceStateMovementNextPosition(gameField.GameState,
-                            nextGenerationArray, row, column);
+                        Move(nextGenerationArray, row, column);
                     }
                 }
             }
             gameField.GameState = nextGenerationArray;
+        }
+
+        private void Move(Animal[,] nextGenerationArray, int row, int column)
+        {
+            var positionOfEnemy = new PositionOnField.PositionOnField();
+            positionOfEnemy = gameField.GameState[row, column].EnemysPositionOnField(gameField.GameState, row, column);
+
+            if (positionOfEnemy.IsEnemyInViewRange)
+            {
+
+            }
+            else
+            {
+                gameField.GameState[row, column].PeaceStateMovementNextPosition(gameField.GameState,
+                    nextGenerationArray, row, column);
+            }
         }
 
         internal void UsersTurnToAddAnimals(GameField gameField, string userKeyPressed)
