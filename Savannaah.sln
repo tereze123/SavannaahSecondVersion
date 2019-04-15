@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savannah.Client", "Savannaah\Savannah.Client.csproj", "{926FA9DC-8C95-4880-9708-EB8275C91EEA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savannah.Animals", "Savannaah.Animals\Savannah.Animals.csproj", "{F67F90DC-0C7F-4653-9FCA-AC6AF418DFD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savannah.FieldOfGame", "Savannah.GameField\Savannah.FieldOfGame.csproj", "{179428D8-C79C-4A44-8AF1-6416E1AE28F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savannah.PositionOnField", "Savannah.PositionOnField\Savannah.PositionOnField.csproj", "{46876ED0-2DF5-4C0F-BCDD-7221F1DE1D3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savannah.Common", "Savannah.GameManager\Savannah.Common.csproj", "{546EFE40-C217-4786-8956-7154C64BA4C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savannah.InputAndOutput", "Savannah.InputAndOutput\Savannah.InputAndOutput.csproj", "{E247A077-4B32-42B0-869F-E6549796DCDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{926FA9DC-8C95-4880-9708-EB8275C91EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{926FA9DC-8C95-4880-9708-EB8275C91EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{926FA9DC-8C95-4880-9708-EB8275C91EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{926FA9DC-8C95-4880-9708-EB8275C91EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F67F90DC-0C7F-4653-9FCA-AC6AF418DFD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F67F90DC-0C7F-4653-9FCA-AC6AF418DFD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F67F90DC-0C7F-4653-9FCA-AC6AF418DFD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F67F90DC-0C7F-4653-9FCA-AC6AF418DFD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{179428D8-C79C-4A44-8AF1-6416E1AE28F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179428D8-C79C-4A44-8AF1-6416E1AE28F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179428D8-C79C-4A44-8AF1-6416E1AE28F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179428D8-C79C-4A44-8AF1-6416E1AE28F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46876ED0-2DF5-4C0F-BCDD-7221F1DE1D3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46876ED0-2DF5-4C0F-BCDD-7221F1DE1D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46876ED0-2DF5-4C0F-BCDD-7221F1DE1D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46876ED0-2DF5-4C0F-BCDD-7221F1DE1D3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{546EFE40-C217-4786-8956-7154C64BA4C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{546EFE40-C217-4786-8956-7154C64BA4C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{546EFE40-C217-4786-8956-7154C64BA4C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{546EFE40-C217-4786-8956-7154C64BA4C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E247A077-4B32-42B0-869F-E6549796DCDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E247A077-4B32-42B0-869F-E6549796DCDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E247A077-4B32-42B0-869F-E6549796DCDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E247A077-4B32-42B0-869F-E6549796DCDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC471367-D57D-4351-B72A-7C61C1C3C8FA}
+	EndGlobalSection
+EndGlobal

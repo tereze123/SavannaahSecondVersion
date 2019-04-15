@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Savannaah.Animals\Savannah.Animals.csproj" />
+    <ProjectReference Include="..\Savannah.PositionOnField\Savannah.PositionOnField.csproj" />
+  </ItemGroup>
+
+</Project>
