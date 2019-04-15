@@ -7,6 +7,8 @@ namespace Savannah.Animals
         public Lion() : base()
         {
             this.Name = "L";
+            this.VisionRange = 5;
+            this.EnemiesName = "A";
         }
     }
 }

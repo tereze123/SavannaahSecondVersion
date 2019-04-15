@@ -1,22 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Savannah.Common;
 using Savannah.PositionOnField;
 namespace Savannaah.Animals
 {
     public abstract class Animal
     {
+        private Configuration configuration;
         private readonly PositionOnFieldValidation positionOnFieldValidation;
+
+        
 
         public Animal()
         {
             this.positionOnFieldValidation = new PositionOnFieldValidation(new Savannah.Common.Configuration());
+            configuration = new Configuration();
+
         }
 
+        public string EnemiesName { get; set; }
 
         public string Name { get; set; }
 
         public int VisionRange { get; set; }
+
+        public virtual bool IsEnemyInVisionRange(Animal[,] initialGeneration, int rowPosition, int columnPosition)
+        {
+            int rowsInVisionRange = VisionRange;
+            int columnsInVisionRange = VisionRange;
+
+            for (rowsInVisionRange *= -1; rowsInVisionRange < VisionRange; rowsInVisionRange++)
+            {
+                for (columnsInVisionRange *= -1; columnsInVisionRange < VisionRange; columnsInVisionRange++)
+                {
+                    if (!(positionOnFieldValidation.IsOutOfBounds(rowPosition + columnsInVisionRange, columnPosition + columnsInVisionRange)) &&
+                        initialGeneration[rowPosition + columnsInVisionRange, columnPosition + columnsInVisionRange] != null &&
+                        initialGeneration[rowPosition + columnsInVisionRange, columnPosition + columnsInVisionRange].Name == EnemiesName)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
         public virtual void PeaceStateMovementNextPosition(
             Animal[,] initialGeneration,
@@ -91,6 +118,6 @@ namespace Savannaah.Animals
             return (gameField[rowPosition, columnPosition] == null) ? true : false;
         }
 
-
+        
     }
 }

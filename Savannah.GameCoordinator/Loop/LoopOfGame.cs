@@ -26,6 +26,10 @@ namespace Savannah.GameCoordinator.Loop
                 {
                     if (gameField.GameState[row, column] != null)
                     {
+                        if(gameField.GameState[row, column].IsEnemyInVisionRange(gameField.GameState,row,column))
+                        {
+                            throw new System.Exception();
+                        }
                         gameField.GameState[row, column].PeaceStateMovementNextPosition(gameField.GameState,
                             nextGenerationArray, row, column);
                     }

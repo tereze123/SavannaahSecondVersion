@@ -70,7 +70,7 @@ namespace Savannah.Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 10.
+        ///   Looks up a localized string similar to 20.
         /// </summary>
         internal static string FieldSize {
             get {
