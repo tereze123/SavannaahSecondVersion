@@ -1,5 +1,6 @@
 ﻿using Savannaah.Animals;
 using Savannah.Animals;
+using Savannah.Common;
 using Savannah.FieldOfGame;
 
 namespace Savannah.GameCoordinator.Loop
@@ -7,9 +8,11 @@ namespace Savannah.GameCoordinator.Loop
     public class LoopOfGame
     {
         private readonly FieldOfGame.GameField gameField;
+        private Configuration configuration;
 
         public LoopOfGame(FieldOfGame.GameField gameField)
         {
+            configuration = new Configuration();
             this.gameField = gameField;
         }
 
@@ -33,13 +36,22 @@ namespace Savannah.GameCoordinator.Loop
 
         internal void UsersTurnToAddAnimals(GameField gameField, string userKeyPressed)
         {
-            if (userKeyPressed == "A")
+            if (userKeyPressed == configuration.GetNameOfAntelope())
             {
                 Animal antilope = new Antelope();
                 PositionOnField.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
                 if (randomAndFreePosOnField != null)
                 {
                     gameField.GameState[randomAndFreePosOnField.RowPosition, randomAndFreePosOnField.ColumnPosition] = antilope;
+                }
+            }
+            else if (userKeyPressed == configuration.GetNameOfLion())
+            {
+                Animal lion = new Lion();
+                PositionOnField.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
+                if (randomAndFreePosOnField != null)
+                {
+                    gameField.GameState[randomAndFreePosOnField.RowPosition, randomAndFreePosOnField.ColumnPosition] = lion;
                 }
             }
         }
