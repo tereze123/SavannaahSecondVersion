@@ -24,7 +24,7 @@ namespace Savannah.FieldOfGame
 
         public int GetGameFieldSize()
         {
-            return 10;
+            return 5;
         }
 
         public PositionOnField.PositionOnField GetRandomAndFreePositionOnField()

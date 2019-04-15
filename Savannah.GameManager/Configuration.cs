@@ -4,7 +4,7 @@
     {
         public int GetGameFieldSize()
         {
-            return 10;
+            return 5;
         }
     }
 }

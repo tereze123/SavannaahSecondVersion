@@ -27,7 +27,7 @@ namespace Savannaah.Animals
         {
 
             var freePositions = this.GetFreePositionsAroundAnimal(initialGeneration, nextGenerationArray, rowPosition, columnPosition);
-            bool freePositionsAreAvailable = !freePositions.Any();
+            bool freePositionsAreAvailable = freePositions.Any();
 
             if (freePositionsAreAvailable)
             {
@@ -35,6 +35,10 @@ namespace Savannaah.Animals
                 var freePositionNumberFromTheList = random.Next(0, freePositions.Count);
                 PositionOnField newAnimalsPositionOnField = freePositions.ElementAt(freePositionNumberFromTheList);
                 nextGenerationArray[newAnimalsPositionOnField.RowPosition, newAnimalsPositionOnField.ColumnPosition] = this;
+            }
+            else
+            {
+                nextGenerationArray[rowPosition, columnPosition] = this;
             }
         }
 

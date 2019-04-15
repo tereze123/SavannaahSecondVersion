@@ -33,13 +33,10 @@ namespace Savannah.GameCoordinator
                     {
                         loopOfGame.UsersTurnToAddAnimals(gameField, userKeyPressed);
                         gameFieldDrawer.DrawGameField(gameField);
-                        Thread.Sleep(1000);
                     }
                 }
                 loopOfGame.LoopThroughTheGame();
-                Thread.Sleep(1000);
                 gameFieldDrawer.DrawGameField(gameField);
-                Thread.Sleep(1000);
             } while (userKeyPressed != "ESC");
         }
 
