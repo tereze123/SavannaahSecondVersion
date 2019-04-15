@@ -21,7 +21,7 @@ namespace Savannah.GameCoordinator.Loop
             {
                 for (int column = 0; column < gameField.GetGameFieldSize(); column++)
                 {
-                    if (gameField.GameState[row,column] != null)
+                    if (gameField.GameState[row, column] != null)
                     {
                         gameField.GameState[row, column].PeaceStateMovementNextPosition(gameField.GameState,
                             nextGenerationArray, row, column);
@@ -36,8 +36,11 @@ namespace Savannah.GameCoordinator.Loop
             if (userKeyPressed == "A")
             {
                 Animal antilope = new Antelope();
-                PositionOnField.PositionOnField randomAndFreePosOnField =  gameField.GetRandomAndFreePositionOnField();
-                gameField.GameState[randomAndFreePosOnField.RowPosition, randomAndFreePosOnField.ColumnPosition] = antilope;
+                PositionOnField.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
+                if (randomAndFreePosOnField != null)
+                {
+                    gameField.GameState[randomAndFreePosOnField.RowPosition, randomAndFreePosOnField.ColumnPosition] = antilope;
+                }
             }
         }
     }

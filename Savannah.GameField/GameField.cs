@@ -1,4 +1,5 @@
 ﻿using Savannaah.Animals;
+using Savannah.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,38 +12,48 @@ namespace Savannah.FieldOfGame
 
         private Random random;
 
+        private Configuration configuration;
+
         public GameField()
         {
-            GameState = new Animal[this.GetGameFieldSize(), this.GetGameFieldSize()];
+            configuration = new Configuration();
+            GameState = new Animal[GetGameFieldSize(), GetGameFieldSize()];
             random = new Random();
         }
 
         public Animal[,] CreateNewGameState()
         {
-            return new Animal[this.GetGameFieldSize(), this.GetGameFieldSize()];
+            return new Animal[GetGameFieldSize(), GetGameFieldSize()];
         }
 
         public int GetGameFieldSize()
         {
-            return 5;
+            return configuration.GetGameFieldSize();
         }
 
         public PositionOnField.PositionOnField GetRandomAndFreePositionOnField()
         {
-            var freePositionList = this.GetAllFreePositionsOnField();
-            var randomPositionNumberFromTheList = random.Next(0, freePositionList.Count);
-            return freePositionList.ElementAt(randomPositionNumberFromTheList);
+            var freePositionList = GetAllFreePositionsOnField();
+            if (freePositionList.Count > 0)
+            {
+                var randomPositionNumberFromTheList = random.Next(0, freePositionList.Count);
+                return freePositionList.ElementAt(randomPositionNumberFromTheList);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public List<PositionOnField.PositionOnField> GetAllFreePositionsOnField()
         {
             var freePositionList = new List<PositionOnField.PositionOnField>();
 
-            for (int row = 0; row < this.GetGameFieldSize(); row++)
+            for (int row = 0; row < GetGameFieldSize(); row++)
             {
-                for (int column = 0; column < this.GetGameFieldSize(); column++)
+                for (int column = 0; column < GetGameFieldSize(); column++)
                 {
-                    if (this.CheckIfThisPositionIsFree(GameState, row, column))
+                    if (CheckIfThisPositionIsFree(GameState, row, column))
                     {
                         freePositionList.Add(new PositionOnField.PositionOnField(row, column));
                     }
