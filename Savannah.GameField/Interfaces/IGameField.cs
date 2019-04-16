@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using Savannaah.Animals;
-using Savannah.PositionOnField;
+﻿using Savannaah.Animals;
+using System.Collections.Generic;
 
 namespace Savannah.FieldOfGame
 {

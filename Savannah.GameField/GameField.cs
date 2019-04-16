@@ -3,7 +3,6 @@ using Savannah.Common;
 using Savannah.Common.Facades;
 using Savannah.Common.Factories;
 using Savannah.PositionOnField.Factories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 

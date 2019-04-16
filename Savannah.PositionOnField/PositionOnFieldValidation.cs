@@ -14,7 +14,7 @@ namespace Savannah.PositionOnField
         {
             int fieldSize = configuration.GetGameFieldSize();
             return (IsPositionRowOrColumnLessThanZero(rowNumber, colNumber)
-                    || IsPositionRowOrColumnMoreOrEqualToFieldSize(rowNumber, colNumber, fieldSize)) ? true : false;                
+                    || IsPositionRowOrColumnMoreOrEqualToFieldSize(rowNumber, colNumber, fieldSize)) ? true : false;
         }
 
         private bool IsPositionRowOrColumnLessThanZero(int rowNumber, int colNumber)
@@ -24,7 +24,7 @@ namespace Savannah.PositionOnField
 
         private bool IsPositionRowOrColumnMoreOrEqualToFieldSize(int rowNumber, int colNumber, int fieldSize)
         {
-            return (rowNumber >= fieldSize 
+            return (rowNumber >= fieldSize
                 || colNumber >= fieldSize) ? true : false;
         }
     }

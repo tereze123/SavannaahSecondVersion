@@ -13,7 +13,7 @@ namespace Savannah.GameCoordinator.Factories
         private readonly IAnimalFactory animalFactory;
         private readonly IPositionOnFieldFactory positionOnFieldFactory;
 
-        public LoopOfGameFactory( IConfiguration configuration, IAnimalFactory animalFactory,IPositionOnFieldFactory positionOnFieldFactory)
+        public LoopOfGameFactory(IConfiguration configuration, IAnimalFactory animalFactory, IPositionOnFieldFactory positionOnFieldFactory)
         {
             this.configuration = configuration;
             this.animalFactory = animalFactory;
