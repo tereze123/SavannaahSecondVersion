@@ -39,8 +39,9 @@ namespace Savannaah.Animals
                         if (ThisCellIsValidAndContainsEnemy(initialGeneration, rowToCheck, columnToCheck))
                         {
                             positionOnField.ColumnPosition = columnPosition + columnsInVisionRange;
-                            positionOnField.RowPosition = rowPosition + columnsInVisionRange;
+                            positionOnField.RowPosition = rowPosition + rowsInVisionRange;
                             positionOnField.IsEnemyInViewRange = true;
+                            return positionOnField;
                         }
                     }
                 }
@@ -90,10 +91,42 @@ namespace Savannaah.Animals
                 int columnPositionOfAnimal
     )
         {
-            var allFreePositions = GetFreePositionsAroundAnimal(initialGeneration, nextGenerationArray, rowPositionOfAnimal, columnPositionOfAnimal);
+            var allFreePositions = GetFreePositionsAroundAnimal(
+                initialGeneration,
+                nextGenerationArray,
+                rowPositionOfAnimal,
+                columnPositionOfAnimal);
 
-            var positionsWhereAnimalCanRunAway = allFreePositions
-                .Where(position => position.RowPosition != rowPositionOfEnemy && position.ColumnPosition != columnPositionOfEnemy);
+
+            var positionsWhereAnimalCanRunAway = new List<PositionOnField>();
+
+
+
+            if (EnemyIsLowerThanAnimal(rowPositionOfAnimal, rowPositionOfEnemy))
+            {
+                positionsWhereAnimalCanRunAway.AddRange(
+                                            allFreePositions
+                                            .Where(p => p.RowPosition < rowPositionOfAnimal)
+                                            );
+            }
+            else
+            {
+                positionsWhereAnimalCanRunAway.AddRange(
+                                                allFreePositions
+                                                .Where(p => p.RowPosition > rowPositionOfAnimal));
+            }
+            if (EnemyIsToTheRightOfAnimal(columnPositionOfAnimal, columnPositionOfEnemy))
+            {
+                positionsWhereAnimalCanRunAway.AddRange(
+                                                allFreePositions
+                                                .Where(p => p.ColumnPosition < columnPositionOfAnimal));
+            }
+            else
+            {
+                positionsWhereAnimalCanRunAway.AddRange(
+                                                allFreePositions
+                                                .Where(p => p.ColumnPosition > columnPositionOfAnimal));
+            }
 
             bool freePositionsAreAvailable = positionsWhereAnimalCanRunAway.Any();
 
@@ -108,6 +141,16 @@ namespace Savannaah.Animals
             {
                 nextGenerationArray[rowPositionOfAnimal, columnPositionOfAnimal] = this;
             }
+        }
+
+        private bool EnemyIsLowerThanAnimal(int rowPositionAnimal, int rowPositionEnemy)
+        {
+            return (rowPositionEnemy > rowPositionAnimal) ? true : false;
+        }
+
+        private bool EnemyIsToTheRightOfAnimal(int columnPositionAnimal, int columnPositionEnemy)
+        {
+            return (columnPositionEnemy > columnPositionAnimal) ? true : false;
         }
 
         public virtual void PeaceStateMovementNextPosition(

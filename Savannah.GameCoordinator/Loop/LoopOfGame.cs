@@ -40,7 +40,13 @@ namespace Savannah.GameCoordinator.Loop
 
             if (positionOfEnemy.IsEnemyInViewRange)
             {
-
+                gameField.GameState[row, column].EnemyIsInRangeMovementNextPosition(
+                    gameField.GameState,
+                    nextGenerationArray,
+                    positionOfEnemy.RowPosition,
+                    positionOfEnemy.ColumnPosition,
+                    row,
+                    column);
             }
             else
             {
