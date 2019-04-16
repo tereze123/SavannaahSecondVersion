@@ -1,5 +1,7 @@
 ﻿using Savannah.Common;
+using Savannah.Common.Factories;
 using Savannah.PositionOnField;
+using Savannah.PositionOnField.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,18 @@ namespace Savannaah.Animals
     {
         private readonly IConfiguration configuration;
         private readonly IPositionOnFieldValidation positionOnFieldValidation;
+        protected readonly IPositionOnFieldFactory positionOnFieldFactory;
+        private readonly IRandomiserFactory randomiserFactory;
 
-        public Animal(IConfiguration configuration, IPositionOnFieldValidation positionOnFieldValidation)
+        public Animal(IConfiguration configuration, 
+            IPositionOnFieldValidation positionOnFieldValidation, 
+            IPositionOnFieldFactory positionOnFieldFactory,
+            IRandomiserFactory randomiserFactory)
         {
             this.configuration = configuration;
             this.positionOnFieldValidation = positionOnFieldValidation;
+            this.positionOnFieldFactory = positionOnFieldFactory;
+            this.randomiserFactory = randomiserFactory;
         }
 
         public string EnemiesName { get; set; }
@@ -24,7 +33,7 @@ namespace Savannaah.Animals
 
         public virtual PositionOnField EnemysPositionOnField(Animal[,] initialGeneration, int rowPosition, int columnPosition)
         {
-            PositionOnField positionOnField = new PositionOnField();
+            PositionOnField positionOnField = positionOnFieldFactory.GetNewPositionOnField(); 
             for (int rowsInVisionRange = VisionRange * -1; rowsInVisionRange <= VisionRange; rowsInVisionRange++)
             {
                 for (int columnsInVisionRange = VisionRange * -1; columnsInVisionRange <= VisionRange; columnsInVisionRange++)
@@ -94,7 +103,7 @@ namespace Savannaah.Animals
                 rowPositionOfAnimal,
                 columnPositionOfAnimal);
 
-            var positionsWhereAnimalCanRunAway = new List<PositionOnField>();
+            var positionsWhereAnimalCanRunAway = positionOnFieldFactory.GetNewListOfPositionsOnField(); 
 
             if (EnemyIsLowerThanAnimal(rowPositionOfAnimal, rowPositionOfEnemy))
             {
@@ -134,7 +143,7 @@ namespace Savannaah.Animals
 
             if (freePositionsAreAvailable)
             {
-                Random random = new Random();
+                var random = randomiserFactory.GetRandom();
                 var freePositionNumberFromTheList = random.Next(0, positionsWhereAnimalCanRunAway.Count());
                 PositionOnField newAnimalsPositionOnField = positionsWhereAnimalCanRunAway.ElementAt(freePositionNumberFromTheList);
 
@@ -173,7 +182,7 @@ namespace Savannaah.Animals
 
             if (freePositionsAreAvailable)
             {
-                Random random = new Random();
+                var random = randomiserFactory.GetRandom();
                 var freePositionNumberFromTheList = random.Next(0, freePositions.Count);
                 PositionOnField newAnimalsPositionOnField = freePositions.ElementAt(freePositionNumberFromTheList);
                 nextGenerationArray[newAnimalsPositionOnField.RowPosition, newAnimalsPositionOnField.ColumnPosition] = this;
@@ -191,7 +200,7 @@ namespace Savannaah.Animals
             int columnPosition
             )
         {
-            var freePositionList = new List<PositionOnField>();
+            var freePositionList = positionOnFieldFactory.GetNewListOfPositionsOnField(); 
 
             for (int row = -1; row < 2; row++)
             {
@@ -204,7 +213,7 @@ namespace Savannaah.Animals
                     && CheckIfThisPositionIsFree(nextGenerationArray, rowPosition + row, columnPosition)
                     )
                 {
-                    freePositionList.Add(new PositionOnField(rowPosition + row, columnPosition));
+                    freePositionList.Add(positionOnFieldFactory.GetNewPositionOnField(rowPosition + row, columnPosition));
                 }
             }
 
@@ -219,7 +228,7 @@ namespace Savannaah.Animals
                     && CheckIfThisPositionIsFree(nextGenerationArray, rowPosition, columnPosition + column)
                    )
                 {
-                    freePositionList.Add(new PositionOnField(rowPosition, columnPosition + column));
+                    freePositionList.Add(positionOnFieldFactory.GetNewPositionOnField(rowPosition, columnPosition + column));
                 }
             }
             return freePositionList;

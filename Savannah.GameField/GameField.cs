@@ -1,5 +1,8 @@
 ﻿using Savannaah.Animals;
 using Savannah.Common;
+using Savannah.Common.Facades;
+using Savannah.Common.Factories;
+using Savannah.PositionOnField.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +13,19 @@ namespace Savannah.FieldOfGame
     {
         public Animal[,] GameState { get; set; }
 
-        private Random random;
 
+        private RandomiserFacade random;
         private readonly IConfiguration configuration;
+        private readonly IPositionOnFieldFactory positionOnFieldFactory;
+        private readonly IRandomiserFactory randomiserFactory;
 
-        public GameField(IConfiguration configuration)
+        public GameField(IConfiguration configuration, IPositionOnFieldFactory positionOnFieldFactory, IRandomiserFactory randomiserFactory)
         {
             this.configuration = configuration;
-            GameState = new Animal[GetGameFieldSize(), GetGameFieldSize()];
-            random = new Random();
+            this.positionOnFieldFactory = positionOnFieldFactory;
+            this.randomiserFactory = randomiserFactory;
+            GameState = CreateNewGameState();
+            random = randomiserFactory.GetRandom();
         }
 
         public Animal[,] CreateNewGameState()
@@ -47,7 +54,7 @@ namespace Savannah.FieldOfGame
 
         public List<PositionOnField.PositionOnField> GetAllFreePositionsOnField()
         {
-            var freePositionList = new List<PositionOnField.PositionOnField>();
+            var freePositionList = positionOnFieldFactory.GetNewListOfPositionsOnField();
 
             for (int row = 0; row < GetGameFieldSize(); row++)
             {
@@ -55,7 +62,7 @@ namespace Savannah.FieldOfGame
                 {
                     if (CheckIfThisPositionIsFree(GameState, row, column))
                     {
-                        freePositionList.Add(new PositionOnField.PositionOnField(row, column));
+                        freePositionList.Add(positionOnFieldFactory.GetNewPositionOnField(row, column));
                     }
                 }
             }

@@ -1,6 +1,8 @@
 ﻿using Savannaah.Animals;
 using Savannah.Common;
+using Savannah.Common.Factories;
 using Savannah.PositionOnField;
+using Savannah.PositionOnField.Factories;
 
 namespace Savannah.Animals.Factories
 {
@@ -8,22 +10,29 @@ namespace Savannah.Animals.Factories
     {
         private readonly IConfiguration configuration;
         private readonly IPositionOnFieldValidation positionOnFieldValidation;
+        private readonly IPositionOnFieldFactory positionOnFieldFactory;
+        private readonly IRandomiserFactory randomiserFactory;
 
-        public AnimalFactory(IConfiguration configuration, IPositionOnFieldValidation positionOnFieldValidation)
+        public AnimalFactory(IConfiguration configuration, 
+            IPositionOnFieldValidation positionOnFieldValidation,
+            IPositionOnFieldFactory positionOnFieldFactory,
+            IRandomiserFactory randomiserFactory)
         {
             this.configuration = configuration;
             this.positionOnFieldValidation = positionOnFieldValidation;
+            this.positionOnFieldFactory = positionOnFieldFactory;
+            this.randomiserFactory = randomiserFactory;
         }
 
         public Animal ReturnNewAnimal(string animalName)
         {
             if (animalName == configuration.GetNameOfAntelope())
             {
-                return new Antelope(configuration, positionOnFieldValidation);
+                return new Antelope(configuration, positionOnFieldValidation, positionOnFieldFactory, randomiserFactory);
             }
             else if (animalName == configuration.GetNameOfLion())
             {
-                return new Lion(configuration, positionOnFieldValidation);
+                return new Lion(configuration, positionOnFieldValidation, positionOnFieldFactory, randomiserFactory);
             }
             else
             {

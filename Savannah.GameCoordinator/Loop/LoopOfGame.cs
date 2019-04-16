@@ -2,6 +2,7 @@
 using Savannah.Animals.Factories;
 using Savannah.Common;
 using Savannah.FieldOfGame;
+using Savannah.PositionOnField.Factories;
 
 namespace Savannah.GameCoordinator.Loop
 {
@@ -10,12 +11,17 @@ namespace Savannah.GameCoordinator.Loop
         private readonly FieldOfGame.IGameField gameField;
         private readonly IConfiguration configuration;
         private readonly IAnimalFactory animalFactory;
+        private readonly IPositionOnFieldFactory positionOnFieldFactory;
 
-        public LoopOfGame(FieldOfGame.IGameField gameField, IConfiguration configuration, IAnimalFactory animalFactory)
+        public LoopOfGame(FieldOfGame.IGameField gameField, 
+            IConfiguration configuration, 
+            IAnimalFactory animalFactory,
+            IPositionOnFieldFactory positionOnFieldFactory)
         {
             this.gameField = gameField;
             this.configuration = configuration;
             this.animalFactory = animalFactory;
+            this.positionOnFieldFactory = positionOnFieldFactory;
         }
 
         public void LoopThroughTheGame()
@@ -37,7 +43,7 @@ namespace Savannah.GameCoordinator.Loop
 
         private void Move(Animal[,] nextGenerationArray, int row, int column)
         {
-            var positionOfEnemy = new PositionOnField.PositionOnField();
+            var positionOfEnemy = positionOnFieldFactory.GetNewPositionOnField();
             positionOfEnemy = gameField.GameState[row, column].EnemysPositionOnField(gameField.GameState, row, column);
 
             if (positionOfEnemy.IsEnemyInViewRange)

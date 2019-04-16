@@ -1,6 +1,8 @@
 ﻿using Savannaah.Animals;
 using Savannah.Common;
+using Savannah.Common.Factories;
 using Savannah.PositionOnField;
+using Savannah.PositionOnField.Factories;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +10,14 @@ namespace Savannah.Animals
 {
     public class Lion : Animal
     {
-        public Lion(IConfiguration configuration, IPositionOnFieldValidation positionOnFieldValidation) : base(configuration, positionOnFieldValidation)
+        public Lion(IConfiguration configuration, 
+            IPositionOnFieldValidation positionOnFieldValidation,
+            IPositionOnFieldFactory positionOnFieldFactory,
+            IRandomiserFactory randomiserFactory) 
+            : base(configuration, 
+                  positionOnFieldValidation, 
+                  positionOnFieldFactory,
+                  randomiserFactory)
         {
             Name = "L";
             VisionRange = 5;
@@ -29,7 +38,7 @@ namespace Savannah.Animals
                                                                          columnPositionOfAnimal)
                                                                          .ToList();
 
-            var listOfPositionsCanCatchEnemy = new List<PositionOnField.PositionOnField>();
+            var listOfPositionsCanCatchEnemy = positionOnFieldFactory.GetNewListOfPositionsOnField();
             PositionOnField.PositionOnField enemiesPosition = CanEatEnemy(nextGenerationArray, listOfPositionsCanCatchEnemy);
             if (enemiesPosition != null)
             {
@@ -99,7 +108,7 @@ namespace Savannah.Animals
                 if (nextGenArray[position.RowPosition, position.ColumnPosition] != null
                     && nextGenArray[position.RowPosition, position.ColumnPosition].Name == EnemiesName)
                 {
-                    return new PositionOnField.PositionOnField(position.RowPosition, position.ColumnPosition);
+                    return positionOnFieldFactory.GetNewPositionOnField(position.RowPosition, position.ColumnPosition);
                 }
             }
             return null;
