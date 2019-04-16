@@ -97,17 +97,13 @@ namespace Savannaah.Animals
                 rowPositionOfAnimal,
                 columnPositionOfAnimal);
 
-
             var positionsWhereAnimalCanRunAway = new List<PositionOnField>();
-
-
 
             if (EnemyIsLowerThanAnimal(rowPositionOfAnimal, rowPositionOfEnemy))
             {
                 positionsWhereAnimalCanRunAway.AddRange(
                                             allFreePositions
-                                            .Where(p => p.RowPosition < rowPositionOfAnimal)
-                                            );
+                                            .Where(p => p.RowPosition < rowPositionOfAnimal));
             }
             else
             {
@@ -128,6 +124,15 @@ namespace Savannaah.Animals
                                                 .Where(p => p.ColumnPosition > columnPositionOfAnimal));
             }
 
+            MakeAmoveIntoNextGeneration(nextGenerationArray, rowPositionOfAnimal, columnPositionOfAnimal, positionsWhereAnimalCanRunAway);
+        }
+
+        protected void MakeAmoveIntoNextGeneration(
+            Animal[,] nextGenerationArray,
+            int rowPositionOfAnimal,
+            int columnPositionOfAnimal,
+            List<PositionOnField> positionsWhereAnimalCanRunAway)
+        {
             bool freePositionsAreAvailable = positionsWhereAnimalCanRunAway.Any();
 
             if (freePositionsAreAvailable)
@@ -143,12 +148,12 @@ namespace Savannaah.Animals
             }
         }
 
-        private bool EnemyIsLowerThanAnimal(int rowPositionAnimal, int rowPositionEnemy)
+        protected bool EnemyIsLowerThanAnimal(int rowPositionAnimal, int rowPositionEnemy)
         {
             return (rowPositionEnemy > rowPositionAnimal) ? true : false;
         }
 
-        private bool EnemyIsToTheRightOfAnimal(int columnPositionAnimal, int columnPositionEnemy)
+        protected bool EnemyIsToTheRightOfAnimal(int columnPositionAnimal, int columnPositionEnemy)
         {
             return (columnPositionEnemy > columnPositionAnimal) ? true : false;
         }
@@ -177,7 +182,7 @@ namespace Savannaah.Animals
             }
         }
 
-        private List<PositionOnField> GetFreePositionsAroundAnimal(
+        protected List<PositionOnField> GetFreePositionsAroundAnimal(
             Animal[,] initialGeneration,
             Animal[,] nextGenerationArray,
             int rowPosition,
@@ -218,14 +223,32 @@ namespace Savannaah.Animals
             return freePositionList;
         }
 
-        private bool CheckIfThisPositionIsFree(
+        protected bool CheckIfThisPositionIsFree(
             Animal[,] gameField,
             int rowPosition,
             int columnPosition)
         {
-            return (gameField[rowPosition, columnPosition] == null) ? true : false;
+            if (Name == configuration.GetNameOfLion())
+            {
+                if ((gameField[rowPosition, columnPosition] == null)
+                    || EnemyIsHere(gameField, rowPosition, columnPosition))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return (gameField[rowPosition, columnPosition] == null) ? true : false;
+            }
         }
 
-
+        private bool EnemyIsHere(Animal[,] gameField, int rowPosition, int columnPosition)
+        {
+            return (gameField[rowPosition, columnPosition].Name == EnemiesName);
+        }
     }
 }
