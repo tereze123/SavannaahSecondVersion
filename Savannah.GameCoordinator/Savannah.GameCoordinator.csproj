@@ -9,8 +9,4 @@
     <ProjectReference Include="..\Savannah.InputAndOutput\Savannah.InputAndOutput.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Factories\" />
-  </ItemGroup>
-
 </Project>
