@@ -1,7 +1,8 @@
-﻿using Savannah.Common;
+﻿using Savannah.Animals.Factories;
+using Savannah.Common;
 using Savannah.GameCoordinator;
 using Savannah.InputAndOutput;
-using System;
+using Savannah.PositionOnField;
 
 namespace Savannaah
 {
@@ -12,8 +13,10 @@ namespace Savannaah
             IConfiguration configuration = new Configuration();
             IUserInput userInput = new UserInputForConsole(configuration);
             IGameFieldDrawer gameFieldDrawer = new GameFieldDrawerForConsole();
+            IPositionOnFieldValidation positionOnFieldValidation = new PositionOnFieldValidation(configuration);
+            IAnimalFactory animalFactory = new AnimalFactory(configuration, positionOnFieldValidation);
 
-            GameManager gameManager = new GameManager(userInput, gameFieldDrawer, configuration);
+            GameManager gameManager = new GameManager(userInput, gameFieldDrawer, configuration, animalFactory);
             gameManager.Start();
         }
     }

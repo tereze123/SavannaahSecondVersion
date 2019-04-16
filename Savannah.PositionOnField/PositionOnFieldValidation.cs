@@ -2,7 +2,7 @@
 using Savannah.Common;
 namespace Savannah.PositionOnField
 {
-    public class PositionOnFieldValidation
+    public class PositionOnFieldValidation : IPositionOnFieldValidation
     {
         private readonly IConfiguration configuration;
 

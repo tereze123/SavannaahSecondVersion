@@ -1,5 +1,5 @@
 ﻿using Savannaah.Animals;
-using Savannah.Animals;
+using Savannah.Animals.Factories;
 using Savannah.Common;
 using Savannah.FieldOfGame;
 
@@ -9,11 +9,13 @@ namespace Savannah.GameCoordinator.Loop
     {
         private readonly FieldOfGame.IGameField gameField;
         private readonly IConfiguration configuration;
+        private readonly IAnimalFactory animalFactory;
 
-        public LoopOfGame(FieldOfGame.IGameField gameField, IConfiguration configuration)
+        public LoopOfGame(FieldOfGame.IGameField gameField, IConfiguration configuration, IAnimalFactory animalFactory)
         {
             this.gameField = gameField;
             this.configuration = configuration;
+            this.animalFactory = animalFactory;
         }
 
         public void LoopThroughTheGame()
@@ -59,7 +61,7 @@ namespace Savannah.GameCoordinator.Loop
         {
             if (userKeyPressed == configuration.GetNameOfAntelope())
             {
-                Animal antilope = new Antelope();
+                Animal antilope = animalFactory.ReturnNewAnimal(configuration.GetNameOfAntelope());
                 PositionOnField.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
                 if (randomAndFreePosOnField != null)
                 {
@@ -68,7 +70,7 @@ namespace Savannah.GameCoordinator.Loop
             }
             else if (userKeyPressed == configuration.GetNameOfLion())
             {
-                Animal lion = new Lion();
+                Animal lion = animalFactory.ReturnNewAnimal(configuration.GetNameOfLion());
                 PositionOnField.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
                 if (randomAndFreePosOnField != null)
                 {

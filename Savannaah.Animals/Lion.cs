@@ -1,4 +1,6 @@
 ﻿using Savannaah.Animals;
+using Savannah.Common;
+using Savannah.PositionOnField;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,7 +8,7 @@ namespace Savannah.Animals
 {
     public class Lion : Animal
     {
-        public Lion() : base()
+        public Lion(IConfiguration configuration, IPositionOnFieldValidation positionOnFieldValidation) : base(configuration, positionOnFieldValidation)
         {
             Name = "L";
             VisionRange = 5;

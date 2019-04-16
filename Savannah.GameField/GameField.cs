@@ -16,9 +16,9 @@ namespace Savannah.FieldOfGame
 
         public GameField(IConfiguration configuration)
         {
+            this.configuration = configuration;
             GameState = new Animal[GetGameFieldSize(), GetGameFieldSize()];
             random = new Random();
-            this.configuration = configuration;
         }
 
         public Animal[,] CreateNewGameState()

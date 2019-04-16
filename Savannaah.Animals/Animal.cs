@@ -7,16 +7,13 @@ namespace Savannaah.Animals
 {
     public abstract class Animal
     {
-        private readonly Configuration configuration;
-        private readonly PositionOnFieldValidation positionOnFieldValidation;
+        private readonly IConfiguration configuration;
+        private readonly IPositionOnFieldValidation positionOnFieldValidation;
 
-
-
-        public Animal()
+        public Animal(IConfiguration configuration, IPositionOnFieldValidation positionOnFieldValidation)
         {
-            positionOnFieldValidation = new PositionOnFieldValidation(new Savannah.Common.Configuration());
-            configuration = new Configuration();
-
+            this.configuration = configuration;
+            this.positionOnFieldValidation = positionOnFieldValidation;
         }
 
         public string EnemiesName { get; set; }

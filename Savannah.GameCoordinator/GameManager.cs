@@ -1,4 +1,6 @@
-﻿using Savannah.Common;
+﻿using Savannah.Animals.Factories;
+using Savannah.Common;
+using Savannah.FieldOfGame.Factories;
 using Savannah.GameCoordinator.Loop;
 using Savannah.InputAndOutput;
 using System.Threading;
@@ -12,14 +14,18 @@ namespace Savannah.GameCoordinator
         private readonly IGameFieldDrawer gameFieldDrawer;
         private FieldOfGame.IGameField gameField;
         private IConfiguration configuration;
+        private readonly IAnimalFactory animalFactory;
 
         public GameManager(IUserInput userInput, 
                            IGameFieldDrawer gameFieldDrawer, 
-                           IConfiguration configuration)
+                           IConfiguration configuration,
+                           IAnimalFactory animalFactory,
+                           IGameFieldFactory gameFieldFactory)
         {
             this.configuration = configuration;
-            this.gameField = new FieldOfGame.GameField();
-            this.loopOfGame = new LoopOfGame(gameField, configuration);
+            this.animalFactory = animalFactory;
+            this.gameField = gameFieldFactory.GetGameField();
+            this.loopOfGame = new LoopOfGame(gameField, configuration, animalFactory);
             this.userInput = userInput;
             this.gameFieldDrawer = gameFieldDrawer;
         }
