@@ -39,7 +39,7 @@ namespace Savannah.GameCoordinator
                     }
                 }
                 loopOfGame.LoopThroughTheGame();
-                Thread.Sleep(100);
+                Thread.Sleep(500);
                 gameFieldDrawer.DrawGameField(gameField);
             } while (userKeyPressed != "ESC");
         }

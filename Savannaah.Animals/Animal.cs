@@ -140,11 +140,16 @@ namespace Savannaah.Animals
                 Random random = new Random();
                 var freePositionNumberFromTheList = random.Next(0, positionsWhereAnimalCanRunAway.Count());
                 PositionOnField newAnimalsPositionOnField = positionsWhereAnimalCanRunAway.ElementAt(freePositionNumberFromTheList);
+
                 nextGenerationArray[newAnimalsPositionOnField.RowPosition, newAnimalsPositionOnField.ColumnPosition] = this;
             }
+
             else
             {
-                nextGenerationArray[rowPositionOfAnimal, columnPositionOfAnimal] = this;
+                if (nextGenerationArray[rowPositionOfAnimal, columnPositionOfAnimal] == null)
+                {
+                    nextGenerationArray[rowPositionOfAnimal, columnPositionOfAnimal] = this;
+                }
             }
         }
 
