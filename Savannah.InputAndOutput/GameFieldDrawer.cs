@@ -3,9 +3,9 @@ using System;
 
 namespace Savannah.InputAndOutput
 {
-    public class GameFieldDrawer
+    public class GameFieldDrawerForConsole : IGameFieldDrawer
     {
-        public void DrawGameField(GameField gameField)
+        public void DrawGameField(IGameField gameField)
         {
             Console.CursorVisible = false;
 
@@ -20,7 +20,7 @@ namespace Savannah.InputAndOutput
             }
         }
 
-        private void OutputAnimalNameOrBlank(GameField gameField, int rowNumber, int columnNumber)
+        private void OutputAnimalNameOrBlank(IGameField gameField, int rowNumber, int columnNumber)
         {
             if (gameField.GameState[rowNumber, columnNumber] == null)
             {

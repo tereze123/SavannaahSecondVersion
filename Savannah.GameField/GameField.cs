@@ -6,19 +6,19 @@ using System.Linq;
 
 namespace Savannah.FieldOfGame
 {
-    public class GameField
+    public class GameField : IGameField
     {
         public Animal[,] GameState { get; set; }
 
         private Random random;
 
-        private Configuration configuration;
+        private readonly IConfiguration configuration;
 
-        public GameField()
+        public GameField(IConfiguration configuration)
         {
-            configuration = new Configuration();
             GameState = new Animal[GetGameFieldSize(), GetGameFieldSize()];
             random = new Random();
+            this.configuration = configuration;
         }
 
         public Animal[,] CreateNewGameState()

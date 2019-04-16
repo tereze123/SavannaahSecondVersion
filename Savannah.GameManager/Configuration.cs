@@ -1,7 +1,7 @@
 ﻿
 namespace Savannah.Common
 {
-    public class Configuration
+    public class Configuration : IConfiguration
     {
         public int GetGameFieldSize()
         {

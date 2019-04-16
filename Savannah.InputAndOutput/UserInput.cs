@@ -3,17 +3,19 @@ using System;
 
 namespace Savannah.InputAndOutput
 {
-    public class UserInput
+    public class UserInputForConsole : IUserInput
     {
-        private Configuration configuration;
-        public UserInput()
+        private readonly IConfiguration configuration;
+
+        public UserInputForConsole(IConfiguration configuration)
         {
-            configuration = new Configuration();
+            this.configuration = configuration;
+ 
         }
-        private ConsoleKeyInfo consoleKeyInfo;
 
         public string ReturnKeyPressed()
         {
+            ConsoleKeyInfo consoleKeyInfo;
             do
             {
                 consoleKeyInfo = Console.ReadKey(true);

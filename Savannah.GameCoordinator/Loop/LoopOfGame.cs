@@ -5,15 +5,15 @@ using Savannah.FieldOfGame;
 
 namespace Savannah.GameCoordinator.Loop
 {
-    public class LoopOfGame
+    public class LoopOfGame : ILoopOfGame
     {
-        private readonly FieldOfGame.GameField gameField;
-        private Configuration configuration;
+        private readonly FieldOfGame.IGameField gameField;
+        private readonly IConfiguration configuration;
 
-        public LoopOfGame(FieldOfGame.GameField gameField)
+        public LoopOfGame(FieldOfGame.IGameField gameField, IConfiguration configuration)
         {
-            configuration = new Configuration();
             this.gameField = gameField;
+            this.configuration = configuration;
         }
 
         public void LoopThroughTheGame()
@@ -55,7 +55,7 @@ namespace Savannah.GameCoordinator.Loop
             }
         }
 
-        internal void UsersTurnToAddAnimals(GameField gameField, string userKeyPressed)
+        public void UsersTurnToAddAnimals(IGameField gameField, string userKeyPressed)
         {
             if (userKeyPressed == configuration.GetNameOfAntelope())
             {

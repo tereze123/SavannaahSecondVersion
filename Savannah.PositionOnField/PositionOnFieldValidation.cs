@@ -4,9 +4,9 @@ namespace Savannah.PositionOnField
 {
     public class PositionOnFieldValidation
     {
-        private readonly Configuration configuration;
+        private readonly IConfiguration configuration;
 
-        public PositionOnFieldValidation(Configuration configuration)
+        public PositionOnFieldValidation(IConfiguration configuration)
         {
             this.configuration = configuration;
         }

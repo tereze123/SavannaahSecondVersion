@@ -7,19 +7,21 @@ namespace Savannah.GameCoordinator
 {
     public class GameManager
     {
-        private readonly LoopOfGame loopOfGame;
-        private readonly UserInput userInput;
-        private readonly GameFieldDrawer gameFieldDrawer;
-        private FieldOfGame.GameField gameField;
-        private Configuration configuration;
+        private readonly ILoopOfGame loopOfGame;
+        private readonly IUserInput userInput;
+        private readonly IGameFieldDrawer gameFieldDrawer;
+        private FieldOfGame.IGameField gameField;
+        private IConfiguration configuration;
 
-        public GameManager(UserInput userInput, GameFieldDrawer gameFieldDrawer)
+        public GameManager(IUserInput userInput, 
+                           IGameFieldDrawer gameFieldDrawer, 
+                           IConfiguration configuration)
         {
+            this.configuration = configuration;
             this.gameField = new FieldOfGame.GameField();
-            this.loopOfGame = new LoopOfGame(gameField);
+            this.loopOfGame = new LoopOfGame(gameField, configuration);
             this.userInput = userInput;
             this.gameFieldDrawer = gameFieldDrawer;
-            configuration = new Configuration();
         }
 
         public void Start()
