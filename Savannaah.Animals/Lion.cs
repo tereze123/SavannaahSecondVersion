@@ -4,6 +4,7 @@ using Savannah.Common.Factories;
 using Savannah.PositionOnField;
 using Savannah.PositionOnField.Factories;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 
 namespace Savannah.Animals

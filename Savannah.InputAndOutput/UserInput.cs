@@ -1,5 +1,6 @@
 ﻿using Savannah.Common;
 using System;
+using System.ComponentModel.Composition;
 
 namespace Savannah.InputAndOutput
 {
@@ -7,6 +8,7 @@ namespace Savannah.InputAndOutput
     {
         private readonly IConfiguration configuration;
 
+        [ImportingConstructor]
         public UserInputForConsole(IConfiguration configuration)
         {
             this.configuration = configuration;

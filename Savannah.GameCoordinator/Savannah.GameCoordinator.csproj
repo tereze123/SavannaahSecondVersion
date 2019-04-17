@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Composition" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Savannah.GameField\Savannah.FieldOfGame.csproj" />
     <ProjectReference Include="..\Savannah.InputAndOutput\Savannah.InputAndOutput.csproj" />
+    <ProjectReference Include="..\Savannah.PositionOnField\Savannah.PositionOnField.csproj" />
   </ItemGroup>
 
 </Project>

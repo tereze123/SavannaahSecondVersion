@@ -1,11 +1,13 @@
 ﻿
 using Savannah.Common;
+using System.ComponentModel.Composition;
+
 namespace Savannah.PositionOnField
 {
     public class PositionOnFieldValidation : IPositionOnFieldValidation
     {
         private readonly IConfiguration configuration;
-
+        [ImportingConstructor]
         public PositionOnFieldValidation(IConfiguration configuration)
         {
             this.configuration = configuration;

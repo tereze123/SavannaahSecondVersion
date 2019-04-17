@@ -1,6 +1,7 @@
 ﻿using Savannah.Common;
 using Savannah.Common.Factories;
 using Savannah.PositionOnField.Factories;
+using System.ComponentModel.Composition;
 
 namespace Savannah.FieldOfGame.Factories
 {
@@ -10,6 +11,7 @@ namespace Savannah.FieldOfGame.Factories
         private readonly IPositionOnFieldFactory positionOnFieldFactory;
         private readonly IRandomiserFactory randomiserFactory;
 
+        [ImportingConstructor]
         public GameFieldFactory(IConfiguration configuration, IPositionOnFieldFactory positionOnFieldFactory, IRandomiserFactory randomiserFactory)
         {
             this.configuration = configuration;

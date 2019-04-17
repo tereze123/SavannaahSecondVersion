@@ -8,7 +8,6 @@ namespace Savannah.Animals
 {
     public class Antelope : Animal
     {
-
         public Antelope(IConfiguration configuration, 
             IPositionOnFieldValidation positionOnFieldValidation,
             IPositionOnFieldFactory positionOnFieldFactory,

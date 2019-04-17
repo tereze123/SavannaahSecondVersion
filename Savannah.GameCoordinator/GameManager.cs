@@ -4,8 +4,8 @@ using Savannah.FieldOfGame.Factories;
 using Savannah.GameCoordinator.Factories;
 using Savannah.GameCoordinator.Loop;
 using Savannah.InputAndOutput;
+using System.ComponentModel.Composition;
 using System.Threading;
-
 namespace Savannah.GameCoordinator
 {
     public class GameManager
@@ -18,6 +18,7 @@ namespace Savannah.GameCoordinator
         private readonly IAnimalFactory animalFactory;
         private readonly ILoopOfGameFactory loopOfGameFactory;
 
+        [ImportingConstructor]
         public GameManager(IUserInput userInput, 
                            IGameFieldDrawer gameFieldDrawer, 
                            IConfiguration configuration,

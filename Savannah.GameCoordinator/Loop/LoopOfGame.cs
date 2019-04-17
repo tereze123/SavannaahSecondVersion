@@ -45,10 +45,9 @@ namespace Savannah.GameCoordinator.Loop
         {
             var positionOfEnemy = positionOnFieldFactory.GetNewPositionOnField();
             positionOfEnemy = gameField.GameState[row, column].EnemysPositionOnField(gameField.GameState, row, column);
-
             if (positionOfEnemy.IsEnemyInViewRange)
             {
-                gameField.GameState[row, column].EnemyIsInRangeMovementNextPosition(
+                    gameField.GameState[row, column].EnemyIsInRangeMovementNextPosition(
                     gameField.GameState,
                     nextGenerationArray,
                     positionOfEnemy.RowPosition,
@@ -58,7 +57,7 @@ namespace Savannah.GameCoordinator.Loop
             }
             else
             {
-                gameField.GameState[row, column].PeaceStateMovementNextPosition(gameField.GameState,
+                    gameField.GameState[row, column].PeaceStateMovementNextPosition(gameField.GameState,
                     nextGenerationArray, row, column);
             }
         }

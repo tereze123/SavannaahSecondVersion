@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.Composition;
+
 namespace Savannah.Common
 {
     public class Configuration : IConfiguration

@@ -3,6 +3,7 @@ using Savannah.Common;
 using Savannah.FieldOfGame;
 using Savannah.GameCoordinator.Loop;
 using Savannah.PositionOnField.Factories;
+using System.ComponentModel.Composition;
 
 namespace Savannah.GameCoordinator.Factories
 {
@@ -13,6 +14,7 @@ namespace Savannah.GameCoordinator.Factories
         private readonly IAnimalFactory animalFactory;
         private readonly IPositionOnFieldFactory positionOnFieldFactory;
 
+        [ImportingConstructor]
         public LoopOfGameFactory(IConfiguration configuration, IAnimalFactory animalFactory, IPositionOnFieldFactory positionOnFieldFactory)
         {
             this.configuration = configuration;
