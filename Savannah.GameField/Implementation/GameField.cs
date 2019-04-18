@@ -10,7 +10,7 @@ namespace Savannah.FieldOfGame
 {
     public class GameField : IGameField
     {
-        public Animal[,] GameState { get; set; }
+        public IAnimal[,] GameState { get; set; }
 
 
         private RandomiserFacade random;
@@ -27,9 +27,9 @@ namespace Savannah.FieldOfGame
             random = randomiserFactory.GetRandom();
         }
 
-        public Animal[,] CreateNewGameState()
+        public IAnimal[,] CreateNewGameState()
         {
-            return new Animal[GetGameFieldSize(), GetGameFieldSize()];
+            return new IAnimal[GetGameFieldSize(), GetGameFieldSize()];
         }
 
         public int GetGameFieldSize()
@@ -69,7 +69,7 @@ namespace Savannah.FieldOfGame
         }
 
         private bool CheckIfThisPositionIsFree(
-            Animal[,] gameField,
+            IAnimal[,] gameField,
             int rowPosition,
             int columnPosition)
         {

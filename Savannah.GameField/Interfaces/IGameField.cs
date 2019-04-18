@@ -5,9 +5,9 @@ namespace Savannah.FieldOfGame
 {
     public interface IGameField
     {
-        Animal[,] GameState { get; set; }
+        IAnimal[,] GameState { get; set; }
 
-        Animal[,] CreateNewGameState();
+        IAnimal[,] CreateNewGameState();
         List<PositionOnField.PositionOnField> GetAllFreePositionsOnField();
         int GetGameFieldSize();
         PositionOnField.PositionOnField GetRandomAndFreePositionOnField();
