@@ -10,13 +10,23 @@ namespace Savannah.Animals.Factories
 {
     public class AnimalFactory : IAnimalFactory
     {
+
         private readonly IConfiguration configuration;
         private readonly IPositionOnFieldValidation positionOnFieldValidation;
         private readonly IPositionOnFieldFactory positionOnFieldFactory;
         private readonly IRandomiserFactory randomiserFactory;
 
-        [ImportMany(typeof(Animal))]
-        private IEnumerable<Animal> animalTypes;
+        [Import]
+        public object animalTypes;
+
+        public object AnimalObjects
+        {
+            get { return animalTypes; }
+            set { animalTypes = value; }
+        }
+
+
+
 
         public AnimalFactory(IConfiguration configuration, 
             IPositionOnFieldValidation positionOnFieldValidation,

@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savannah.Animals", "Savanna
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savannah.FieldOfGame", "Savannah.GameField\Savannah.FieldOfGame.csproj", "{179428D8-C79C-4A44-8AF1-6416E1AE28F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savannah.PositionOnField", "Savannah.PositionOnField\Savannah.PositionOnField.csproj", "{46876ED0-2DF5-4C0F-BCDD-7221F1DE1D3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savannah.PositionOnField", "Savannah.PositionOnField\Savannah.PositionOnField.csproj", "{46876ED0-2DF5-4C0F-BCDD-7221F1DE1D3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savannah.Common", "Savannah.GameManager\Savannah.Common.csproj", "{546EFE40-C217-4786-8956-7154C64BA4C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savannah.Common", "Savannah.GameManager\Savannah.Common.csproj", "{546EFE40-C217-4786-8956-7154C64BA4C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savannah.InputAndOutput", "Savannah.InputAndOutput\Savannah.InputAndOutput.csproj", "{E247A077-4B32-42B0-869F-E6549796DCDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savannah.InputAndOutput", "Savannah.InputAndOutput\Savannah.InputAndOutput.csproj", "{E247A077-4B32-42B0-869F-E6549796DCDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Savannah.GameCoordinator", "Savannah.GameCoordinator\Savannah.GameCoordinator.csproj", "{B6F3A707-98C3-4BC2-8879-37AB0B88C4C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savannah.GameCoordinator", "Savannah.GameCoordinator\Savannah.GameCoordinator.csproj", "{B6F3A707-98C3-4BC2-8879-37AB0B88C4C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtherAnimals", "OtherAnimals\OtherAnimals.csproj", "{C538BE89-7544-4648-9BC8-8D867821ACF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{B6F3A707-98C3-4BC2-8879-37AB0B88C4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6F3A707-98C3-4BC2-8879-37AB0B88C4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6F3A707-98C3-4BC2-8879-37AB0B88C4C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C538BE89-7544-4648-9BC8-8D867821ACF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C538BE89-7544-4648-9BC8-8D867821ACF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C538BE89-7544-4648-9BC8-8D867821ACF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C538BE89-7544-4648-9BC8-8D867821ACF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

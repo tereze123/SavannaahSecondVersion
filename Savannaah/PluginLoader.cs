@@ -14,7 +14,7 @@ namespace Savannah.Client
         {
             var catalog = new AggregateCatalog();
 
-            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.LoadFrom(@"C:\Users\tereze.elize.empele\source\repos\Savannaah\Savannaah.Animals\obj\Debug\netcoreapp2.1\Savannah.Animals.dll")));
+            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.LoadFrom(@"C:\Users\tereze.elize.empele\source\repos\Savannaah\OtherAnimals\obj\Debug\netcoreapp2.1\OtherAnimals.dll")));
             var container = new CompositionContainer(catalog);
             container.ComposeParts(animalFactory);
         }

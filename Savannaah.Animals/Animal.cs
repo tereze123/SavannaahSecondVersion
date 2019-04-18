@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Savannaah.Animals
 {
-    public abstract class Animal
+    public abstract class Animal : IAnimal
     {
         private readonly IConfiguration configuration;
         private readonly IPositionOnFieldValidation positionOnFieldValidation;

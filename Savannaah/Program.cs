@@ -9,9 +9,7 @@ using Savannah.GameCoordinator.Factories;
 using Savannah.InputAndOutput;
 using Savannah.PositionOnField;
 using Savannah.PositionOnField.Factories;
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
-using System.Reflection;
+using System;
 
 namespace Savannaah
 {
@@ -34,8 +32,11 @@ namespace Savannaah
             pluginLoader.LoadPlugins(animalFactory);
 
 
-            GameManager gameManager = new GameManager(userInput, gameFieldDrawer, configuration, animalFactory, gameFieldFactory, loopOfGameFactory);
-            gameManager.Start();
+                Console.WriteLine(animalFactory.AnimalObjects);
+
+
+            //GameManager gameManager = new GameManager(userInput, gameFieldDrawer, configuration, animalFactory, gameFieldFactory, loopOfGameFactory);
+            //gameManager.Start();
         }
 
 
