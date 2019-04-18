@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.Composition;
-using Savannaah.Animals;
-using Savannah.PositionOnField;
+﻿using Savannaah.Animals;
+using System.ComponentModel.Composition;
 
 namespace OtherAnimals
 {
