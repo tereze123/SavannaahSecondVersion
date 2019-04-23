@@ -12,9 +12,7 @@ namespace Savannah.Client
     {
         public void LoadPlugins(IAnimalFactory animalFactory)
         {
-            var catalog = new AggregateCatalog();
-
-            catalog.Catalogs.Add(new AssemblyCatalog(Assembly.LoadFrom(@"C:\Users\tereze.elize.empele\source\repos\Savannaah\OtherAnimals\obj\Debug\netcoreapp2.1\OtherAnimals.dll")));
+            DirectoryCatalog catalog = new DirectoryCatalog(@"C:\Users\tereze.elize.empele\source\repos\ForPluginTest\ForPluginTest\bin\Debug\netcoreapp2.1", "*.dll");
             var container = new CompositionContainer(catalog);
             container.ComposeParts(animalFactory);
         }

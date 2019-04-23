@@ -1,4 +1,5 @@
-﻿using Savannaah.Animals;
+﻿
+using AccessLibraryForPlugins.Animals;
 using System.Collections.Generic;
 
 namespace Savannah.FieldOfGame
@@ -8,8 +9,8 @@ namespace Savannah.FieldOfGame
         IAnimal[,] GameState { get; set; }
 
         IAnimal[,] CreateNewGameState();
-        List<PositionOnField.PositionOnField> GetAllFreePositionsOnField();
+        List<AccessLibraryForPlugins.PositionOnField> GetAllFreePositionsOnField();
         int GetGameFieldSize();
-        PositionOnField.PositionOnField GetRandomAndFreePositionOnField();
+        AccessLibraryForPlugins.PositionOnField GetRandomAndFreePositionOnField();
     }
 }

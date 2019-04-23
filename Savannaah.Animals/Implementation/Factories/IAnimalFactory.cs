@@ -1,13 +1,12 @@
-﻿using Savannaah.Animals;
-using System.Collections.Generic;
+﻿using AccessLibraryForPlugins.Animals;
 using System.ComponentModel.Composition;
 
 namespace Savannah.Animals.Factories
 {
     public interface IAnimalFactory
     {
-        [Import(typeof(object))]
-        object AnimalObjects { get; set; }
-        Animal ReturnNewAnimal(string animalName);
+        [Import(typeof(IAnimal))]
+        IAnimal AnimalObjects { get; set; }
+        IAnimal ReturnNewAnimal(string animalName);
     }
 }

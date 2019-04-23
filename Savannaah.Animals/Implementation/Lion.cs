@@ -1,4 +1,5 @@
-﻿using Savannaah.Animals;
+﻿using AccessLibraryForPlugins.Animals;
+using Savannaah.Animals;
 using Savannah.Common;
 using Savannah.Common.Factories;
 using Savannah.PositionOnField;
@@ -24,8 +25,8 @@ namespace Savannah.Animals
             EnemiesName = "A";
         }
         public override void EnemyIsInRangeMovementNextPosition(
-                            Animal[,] initialGeneration,
-                            Animal[,] nextGenerationArray,
+                            IAnimal[,] initialGeneration,
+                            IAnimal[,] nextGenerationArray,
                             int rowPositionOfEnemy,
                             int columnPositionOfEnemy,
                             int rowPositionOfAnimal,
@@ -39,7 +40,7 @@ namespace Savannah.Animals
                                                                          .ToList();
 
             var listOfPositionsCanCatchEnemy = positionOnFieldFactory.GetNewListOfPositionsOnField();
-            PositionOnField.PositionOnField enemiesPosition = CanEatEnemy(nextGenerationArray, listOfPositionsCanCatchEnemy);
+            AccessLibraryForPlugins.PositionOnField enemiesPosition = CanEatEnemy(nextGenerationArray, listOfPositionsCanCatchEnemy);
             if (enemiesPosition != null)
             {
                 nextGenerationArray[enemiesPosition.RowPosition, enemiesPosition.ColumnPosition] = this;
@@ -101,7 +102,7 @@ namespace Savannah.Animals
             }
         }
 
-        private PositionOnField.PositionOnField CanEatEnemy(Animal[,] nextGenArray, List<PositionOnField.PositionOnField> listOfPositionsCanCatchEnemy)
+        private AccessLibraryForPlugins.PositionOnField CanEatEnemy(IAnimal[,] nextGenArray, List<AccessLibraryForPlugins.PositionOnField> listOfPositionsCanCatchEnemy)
         {
             foreach (var position in listOfPositionsCanCatchEnemy)
             {
@@ -118,8 +119,8 @@ namespace Savannah.Animals
             int rowPositionOfEnemy,
             int columnPositionOfEnemy,
             int columnPositionOfAnimal,
-            List<PositionOnField.PositionOnField> freePositionsOnField,
-            List<PositionOnField.PositionOnField> listOfPositionsCanCatchEnemy)
+            List<AccessLibraryForPlugins.PositionOnField> freePositionsOnField,
+            List<AccessLibraryForPlugins.PositionOnField> listOfPositionsCanCatchEnemy)
         {
             if (base.EnemyIsToTheRightOfAnimal(columnPositionOfAnimal, columnPositionOfEnemy))
             {
@@ -141,8 +142,8 @@ namespace Savannah.Animals
             int rowPositionOfEnemy,
             int columnPositionOfEnemy,
             int rowPositionOfAnimal,
-            List<PositionOnField.PositionOnField> freePositionsOnField,
-            List<PositionOnField.PositionOnField> listOfPositionsCanCatchEnemy)
+            List<AccessLibraryForPlugins.PositionOnField> freePositionsOnField,
+            List<AccessLibraryForPlugins.PositionOnField> listOfPositionsCanCatchEnemy)
         {
             if (base.EnemyIsLowerThanAnimal(rowPositionOfAnimal, rowPositionOfEnemy))
             {

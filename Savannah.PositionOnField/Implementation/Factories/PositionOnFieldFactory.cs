@@ -1,23 +1,22 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.Composition;
 
 namespace Savannah.PositionOnField.Factories
 {
     public class PositionOnFieldFactory : IPositionOnFieldFactory
     {
-        public List<PositionOnField> GetNewListOfPositionsOnField()
+        public List<AccessLibraryForPlugins.PositionOnField> GetNewListOfPositionsOnField()
         {
-            return new List<PositionOnField>();
+            return new List<AccessLibraryForPlugins.PositionOnField>();
         }
 
-        public PositionOnField GetNewPositionOnField()
+        public AccessLibraryForPlugins.PositionOnField GetNewPositionOnField()
         {
-            return new PositionOnField();
+            return new AccessLibraryForPlugins.PositionOnField();
         }
 
-        public PositionOnField GetNewPositionOnField(int row, int column)
+        public AccessLibraryForPlugins.PositionOnField GetNewPositionOnField(int row, int column)
         {
-            return new PositionOnField(row, column);
+            return new AccessLibraryForPlugins.PositionOnField(row, column);
         }
     }
 }

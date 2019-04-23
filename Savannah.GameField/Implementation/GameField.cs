@@ -1,4 +1,5 @@
-﻿using Savannaah.Animals;
+﻿using AccessLibraryForPlugins.Animals;
+using Savannaah.Animals;
 using Savannah.Common;
 using Savannah.Common.Facades;
 using Savannah.Common.Factories;
@@ -37,7 +38,7 @@ namespace Savannah.FieldOfGame
             return configuration.GetGameFieldSize();
         }
 
-        public PositionOnField.PositionOnField GetRandomAndFreePositionOnField()
+        public AccessLibraryForPlugins.PositionOnField GetRandomAndFreePositionOnField()
         {
             var freePositionList = GetAllFreePositionsOnField();
             if (freePositionList.Count > 0)
@@ -51,7 +52,7 @@ namespace Savannah.FieldOfGame
             }
         }
 
-        public List<PositionOnField.PositionOnField> GetAllFreePositionsOnField()
+        public List<AccessLibraryForPlugins.PositionOnField> GetAllFreePositionsOnField()
         {
             var freePositionList = positionOnFieldFactory.GetNewListOfPositionsOnField();
 

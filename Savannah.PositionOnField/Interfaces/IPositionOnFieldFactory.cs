@@ -4,8 +4,8 @@ namespace Savannah.PositionOnField.Factories
 {
     public interface IPositionOnFieldFactory
     {
-        PositionOnField GetNewPositionOnField();
-        PositionOnField GetNewPositionOnField(int row, int column);
-        List<PositionOnField> GetNewListOfPositionsOnField();
+        AccessLibraryForPlugins.PositionOnField GetNewPositionOnField();
+        AccessLibraryForPlugins.PositionOnField GetNewPositionOnField(int row, int column);
+        List<AccessLibraryForPlugins.PositionOnField> GetNewListOfPositionsOnField();
     }
 }

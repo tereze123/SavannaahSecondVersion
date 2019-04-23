@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AccessLibraryForPlugins\AccessLibraryForPlugins.csproj" />
     <ProjectReference Include="..\Savannah.GameManager\Savannah.Common.csproj" />
     <ProjectReference Include="..\Savannah.PositionOnField\Savannah.PositionOnField.csproj" />
   </ItemGroup>

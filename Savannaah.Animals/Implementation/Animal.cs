@@ -1,4 +1,5 @@
-﻿using Savannah.Common;
+﻿using AccessLibraryForPlugins.Animals;
+using Savannah.Common;
 using Savannah.Common.Factories;
 using Savannah.PositionOnField;
 using Savannah.PositionOnField.Factories;
@@ -30,9 +31,9 @@ namespace Savannaah.Animals
 
         public int VisionRange { get; set; }
 
-        public virtual PositionOnField EnemysPositionOnField(IAnimal[,] initialGeneration, int rowPosition, int columnPosition)
+        public virtual AccessLibraryForPlugins.PositionOnField EnemysPositionOnField(IAnimal[,] initialGeneration, int rowPosition, int columnPosition)
         {
-            PositionOnField positionOnField = positionOnFieldFactory.GetNewPositionOnField(); 
+            AccessLibraryForPlugins.PositionOnField positionOnField = positionOnFieldFactory.GetNewPositionOnField(); 
             for (int rowsInVisionRange = VisionRange * -1; rowsInVisionRange <= VisionRange; rowsInVisionRange++)
             {
                 for (int columnsInVisionRange = VisionRange * -1; columnsInVisionRange <= VisionRange; columnsInVisionRange++)
@@ -136,7 +137,7 @@ namespace Savannaah.Animals
             IAnimal[,] nextGenerationArray,
             int rowPositionOfAnimal,
             int columnPositionOfAnimal,
-            List<PositionOnField> positionsWhereAnimalCanRunAway)
+            List<AccessLibraryForPlugins.PositionOnField> positionsWhereAnimalCanRunAway)
         {
             bool freePositionsAreAvailable = positionsWhereAnimalCanRunAway.Any();
 
@@ -144,7 +145,7 @@ namespace Savannaah.Animals
             {
                 var random = randomiserFactory.GetRandom();
                 var freePositionNumberFromTheList = random.Next(0, positionsWhereAnimalCanRunAway.Count());
-                PositionOnField newAnimalsPositionOnField = positionsWhereAnimalCanRunAway.ElementAt(freePositionNumberFromTheList);
+                AccessLibraryForPlugins.PositionOnField newAnimalsPositionOnField = positionsWhereAnimalCanRunAway.ElementAt(freePositionNumberFromTheList);
 
                 nextGenerationArray[newAnimalsPositionOnField.RowPosition, newAnimalsPositionOnField.ColumnPosition] = this;
             }
@@ -183,7 +184,7 @@ namespace Savannaah.Animals
             {
                 var random = randomiserFactory.GetRandom();
                 var freePositionNumberFromTheList = random.Next(0, freePositions.Count);
-                PositionOnField newAnimalsPositionOnField = freePositions.ElementAt(freePositionNumberFromTheList);
+                AccessLibraryForPlugins.PositionOnField newAnimalsPositionOnField = freePositions.ElementAt(freePositionNumberFromTheList);
                 nextGenerationArray[newAnimalsPositionOnField.RowPosition, newAnimalsPositionOnField.ColumnPosition] = this;
             }
             else
@@ -192,7 +193,7 @@ namespace Savannaah.Animals
             }
         }
 
-        protected List<PositionOnField> GetFreePositionsAroundAnimal(
+        protected List<AccessLibraryForPlugins.PositionOnField> GetFreePositionsAroundAnimal(
             IAnimal[,] initialGeneration,
             IAnimal[,] nextGenerationArray,
             int rowPosition,

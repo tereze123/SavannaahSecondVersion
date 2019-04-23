@@ -1,6 +1,5 @@
-﻿using Savannah.PositionOnField;
-
-namespace Savannaah.Animals
+﻿
+namespace AccessLibraryForPlugins.Animals
 {
     public interface IAnimal
     {
@@ -9,7 +8,7 @@ namespace Savannaah.Animals
         int VisionRange { get; set; }
 
         void EnemyIsInRangeMovementNextPosition(IAnimal[,] initialGeneration, IAnimal[,] nextGenerationArray, int rowPositionOfEnemy, int columnPositionOfEnemy, int rowPositionOfAnimal, int columnPositionOfAnimal);
-        PositionOnField EnemysPositionOnField(IAnimal[,] initialGeneration, int rowPosition, int columnPosition);
+        AccessLibraryForPlugins.PositionOnField EnemysPositionOnField(IAnimal[,] initialGeneration, int rowPosition, int columnPosition);
         void PeaceStateMovementNextPosition(IAnimal[,] initialGeneration, IAnimal[,] nextGenerationArray, int rowPosition, int columnPosition);
     }
 }

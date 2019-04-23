@@ -1,4 +1,5 @@
-﻿using Savannaah.Animals;
+﻿using AccessLibraryForPlugins.Animals;
+using Savannaah.Animals;
 using Savannah.Animals.Factories;
 using Savannah.Common;
 using Savannah.FieldOfGame;
@@ -41,7 +42,7 @@ namespace Savannah.GameCoordinator.Loop
             gameField.GameState = nextGenerationArray;
         }
 
-        private void Move(Animal[,] nextGenerationArray, int row, int column)
+        private void Move(IAnimal[,] nextGenerationArray, int row, int column)
         {
             var positionOfEnemy = positionOnFieldFactory.GetNewPositionOnField();
             positionOfEnemy = gameField.GameState[row, column].EnemysPositionOnField(gameField.GameState, row, column);
@@ -66,8 +67,8 @@ namespace Savannah.GameCoordinator.Loop
         {
             if (userKeyPressed == configuration.GetNameOfAntelope())
             {
-                Animal antilope = animalFactory.ReturnNewAnimal(configuration.GetNameOfAntelope());
-                PositionOnField.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
+                IAnimal antilope = animalFactory.ReturnNewAnimal(configuration.GetNameOfAntelope());
+                AccessLibraryForPlugins.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
                 if (randomAndFreePosOnField != null)
                 {
                     gameField.GameState[randomAndFreePosOnField.RowPosition, randomAndFreePosOnField.ColumnPosition] = antilope;
@@ -75,8 +76,8 @@ namespace Savannah.GameCoordinator.Loop
             }
             else if (userKeyPressed == configuration.GetNameOfLion())
             {
-                Animal lion = animalFactory.ReturnNewAnimal(configuration.GetNameOfLion());
-                PositionOnField.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
+                IAnimal lion = animalFactory.ReturnNewAnimal(configuration.GetNameOfLion());
+                AccessLibraryForPlugins.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
                 if (randomAndFreePosOnField != null)
                 {
                     gameField.GameState[randomAndFreePosOnField.RowPosition, randomAndFreePosOnField.ColumnPosition] = lion;

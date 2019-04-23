@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AccessLibraryForPlugins\AccessLibraryForPlugins.csproj" />
     <ProjectReference Include="..\Savannaah.Animals\Savannah.Animals.csproj" />
     <ProjectReference Include="..\Savannah.GameCoordinator\Savannah.GameCoordinator.csproj" />
     <ProjectReference Include="..\Savannah.GameField\Savannah.FieldOfGame.csproj" />

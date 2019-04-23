@@ -1,4 +1,4 @@
-﻿namespace Savannah.PositionOnField
+﻿namespace AccessLibraryForPlugins
 {
     public class PositionOnField
     {

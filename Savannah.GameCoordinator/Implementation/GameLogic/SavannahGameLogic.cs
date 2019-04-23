@@ -28,13 +28,13 @@ namespace Savannah.GameCoordinator.GameLogic
             this.randomiserFactory = randomiserFactory;
         }
 
-        public virtual PositionOnField.PositionOnField EnemysPositionOnField(Animal[,] initialGeneration, 
+        public virtual AccessLibraryForPlugins.PositionOnField EnemysPositionOnField(Animal[,] initialGeneration, 
             int rowPosition, 
             int columnPosition,
             int visionRange,
             string enemiesName)
         {
-            PositionOnField.PositionOnField positionOnField = positionOnFieldFactory.GetNewPositionOnField();
+            AccessLibraryForPlugins.PositionOnField positionOnField = positionOnFieldFactory.GetNewPositionOnField();
             for (int rowsInVisionRange = visionRange * -1; rowsInVisionRange <= visionRange; rowsInVisionRange++)
             {
                 for (int columnsInVisionRange = visionRange * -1; columnsInVisionRange <= visionRange; columnsInVisionRange++)
@@ -146,7 +146,7 @@ namespace Savannah.GameCoordinator.GameLogic
             Animal[,] nextGenerationArray,
             int rowPositionOfAnimal,
             int columnPositionOfAnimal,
-            List<PositionOnField.PositionOnField> positionsWhereAnimalCanRunAway,
+            List<AccessLibraryForPlugins.PositionOnField> positionsWhereAnimalCanRunAway,
             Animal animal)
         {
             bool freePositionsAreAvailable = positionsWhereAnimalCanRunAway.Any();
@@ -155,7 +155,7 @@ namespace Savannah.GameCoordinator.GameLogic
             {
                 var random = randomiserFactory.GetRandom();
                 var freePositionNumberFromTheList = random.Next(0, positionsWhereAnimalCanRunAway.Count());
-                PositionOnField.PositionOnField newAnimalsPositionOnField = positionsWhereAnimalCanRunAway.ElementAt(freePositionNumberFromTheList);
+                AccessLibraryForPlugins.PositionOnField newAnimalsPositionOnField = positionsWhereAnimalCanRunAway.ElementAt(freePositionNumberFromTheList);
 
                 nextGenerationArray[newAnimalsPositionOnField.RowPosition, newAnimalsPositionOnField.ColumnPosition] = animal;
             }
@@ -199,7 +199,7 @@ namespace Savannah.GameCoordinator.GameLogic
             {
                 var random = randomiserFactory.GetRandom();
                 var freePositionNumberFromTheList = random.Next(0, freePositions.Count);
-                PositionOnField.PositionOnField newAnimalsPositionOnField = freePositions.ElementAt(freePositionNumberFromTheList);
+                AccessLibraryForPlugins.PositionOnField newAnimalsPositionOnField = freePositions.ElementAt(freePositionNumberFromTheList);
                 nextGenerationArray[newAnimalsPositionOnField.RowPosition, newAnimalsPositionOnField.ColumnPosition] = animal;
             }
             else
@@ -208,7 +208,7 @@ namespace Savannah.GameCoordinator.GameLogic
             }
         }
 
-        protected List<PositionOnField.PositionOnField> GetFreePositionsAroundAnimal(
+        protected List<AccessLibraryForPlugins.PositionOnField> GetFreePositionsAroundAnimal(
             Animal[,] initialGeneration,
             Animal[,] nextGenerationArray,
             int rowPosition,
@@ -297,7 +297,7 @@ namespace Savannah.GameCoordinator.GameLogic
                                                                          .ToList();
 
             var listOfPositionsCanCatchEnemy = positionOnFieldFactory.GetNewListOfPositionsOnField();
-            PositionOnField.PositionOnField enemiesPosition = CanEatEnemy(nextGenerationArray, listOfPositionsCanCatchEnemy, animal.EnemiesName);
+            AccessLibraryForPlugins.PositionOnField enemiesPosition = CanEatEnemy(nextGenerationArray, listOfPositionsCanCatchEnemy, animal.EnemiesName);
             if (enemiesPosition != null)
             {
                 nextGenerationArray[enemiesPosition.RowPosition, enemiesPosition.ColumnPosition] = animal;
@@ -360,9 +360,9 @@ namespace Savannah.GameCoordinator.GameLogic
             }
         }
 
-        private PositionOnField.PositionOnField CanEatEnemy(
+        private AccessLibraryForPlugins.PositionOnField CanEatEnemy(
             Animal[,] nextGenArray, 
-            List<PositionOnField.PositionOnField> listOfPositionsCanCatchEnemy,
+            List<AccessLibraryForPlugins.PositionOnField> listOfPositionsCanCatchEnemy,
             string nameOfEnemy)
         {
             foreach (var position in listOfPositionsCanCatchEnemy)
@@ -380,8 +380,8 @@ namespace Savannah.GameCoordinator.GameLogic
             int rowPositionOfEnemy,
             int columnPositionOfEnemy,
             int columnPositionOfAnimal,
-            List<PositionOnField.PositionOnField> freePositionsOnField,
-            List<PositionOnField.PositionOnField> listOfPositionsCanCatchEnemy)
+            List<AccessLibraryForPlugins.PositionOnField> freePositionsOnField,
+            List<AccessLibraryForPlugins.PositionOnField> listOfPositionsCanCatchEnemy)
         {
             if (EnemyIsToTheRightOfAnimal(columnPositionOfAnimal, columnPositionOfEnemy))
             {
@@ -403,8 +403,8 @@ namespace Savannah.GameCoordinator.GameLogic
             int rowPositionOfEnemy,
             int columnPositionOfEnemy,
             int rowPositionOfAnimal,
-            List<PositionOnField.PositionOnField> freePositionsOnField,
-            List<PositionOnField.PositionOnField> listOfPositionsCanCatchEnemy)
+            List<AccessLibraryForPlugins.PositionOnField> freePositionsOnField,
+            List<AccessLibraryForPlugins.PositionOnField> listOfPositionsCanCatchEnemy)
         {
             if (EnemyIsLowerThanAnimal(rowPositionOfAnimal, rowPositionOfEnemy))
             {

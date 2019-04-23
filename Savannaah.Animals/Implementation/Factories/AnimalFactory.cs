@@ -1,9 +1,8 @@
-﻿using Savannaah.Animals;
+﻿using AccessLibraryForPlugins.Animals;
 using Savannah.Common;
 using Savannah.Common.Factories;
 using Savannah.PositionOnField;
 using Savannah.PositionOnField.Factories;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
 
 namespace Savannah.Animals.Factories
@@ -16,17 +15,14 @@ namespace Savannah.Animals.Factories
         private readonly IPositionOnFieldFactory positionOnFieldFactory;
         private readonly IRandomiserFactory randomiserFactory;
 
-        [Import]
-        public object animalTypes;
+        [Import(typeof(IAnimal))]
+        public IAnimal animalTypes;
 
-        public object AnimalObjects
+        public IAnimal AnimalObjects
         {
             get { return animalTypes; }
             set { animalTypes = value; }
         }
-
-
-
 
         public AnimalFactory(IConfiguration configuration, 
             IPositionOnFieldValidation positionOnFieldValidation,
@@ -39,7 +35,7 @@ namespace Savannah.Animals.Factories
             this.randomiserFactory = randomiserFactory;
         }
 
-        public Animal ReturnNewAnimal(string animalName)
+        public IAnimal ReturnNewAnimal(string animalName)
         {
             if (animalName == configuration.GetNameOfAntelope())
             {
