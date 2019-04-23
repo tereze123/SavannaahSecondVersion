@@ -68,37 +68,47 @@ namespace Savannah.Animals
                 }
                 else
                 {
-                    if (base.EnemyIsLowerThanAnimal(rowPositionOfAnimal, rowPositionOfEnemy))
-                    {
-                        listOfPositionsCanCatchEnemy.AddRange(
-                                                    freePositionsOnField
-                                                    .Where(p => p.RowPosition > rowPositionOfAnimal)
-                                                    );
-                    }
-                    else
-                    {
-                        listOfPositionsCanCatchEnemy.AddRange(
-                                freePositionsOnField
-                                .Where(p => p.RowPosition < rowPositionOfAnimal)
-                                );
-                    }
-                    if (base.EnemyIsToTheRightOfAnimal(columnPositionOfAnimal, columnPositionOfEnemy))
-                    {
-                        listOfPositionsCanCatchEnemy.AddRange(
-                                                             freePositionsOnField
-                                                            .Where(p => p.ColumnPosition > columnPositionOfAnimal));
-                    }
-                    else
-                    {
-                        listOfPositionsCanCatchEnemy.AddRange(
-                                         freePositionsOnField
-                                        .Where(p => p.ColumnPosition < columnPositionOfAnimal));
-                    }
+                    AddPossibleRowPositions(rowPositionOfEnemy, rowPositionOfAnimal, freePositionsOnField, listOfPositionsCanCatchEnemy);
+                    AddPossibleColumnPositions(columnPositionOfEnemy, columnPositionOfAnimal, freePositionsOnField, listOfPositionsCanCatchEnemy);
                 }
                 base.MakeAmoveIntoNextGeneration(nextGenerationArray,
                                                    rowPositionOfAnimal,
                                                    columnPositionOfAnimal,
                                                    listOfPositionsCanCatchEnemy);
+            }
+        }
+
+        private void AddPossibleColumnPositions(int columnPositionOfEnemy, int columnPositionOfAnimal, List<AccessLibraryForPlugins.PositionOnField> freePositionsOnField, List<AccessLibraryForPlugins.PositionOnField> listOfPositionsCanCatchEnemy)
+        {
+            if (base.EnemyIsToTheRightOfAnimal(columnPositionOfAnimal, columnPositionOfEnemy))
+            {
+                listOfPositionsCanCatchEnemy.AddRange(
+                                                     freePositionsOnField
+                                                    .Where(p => p.ColumnPosition > columnPositionOfAnimal));
+            }
+            else
+            {
+                listOfPositionsCanCatchEnemy.AddRange(
+                                 freePositionsOnField
+                                .Where(p => p.ColumnPosition < columnPositionOfAnimal));
+            }
+        }
+
+        private void AddPossibleRowPositions(int rowPositionOfEnemy, int rowPositionOfAnimal, List<AccessLibraryForPlugins.PositionOnField> freePositionsOnField, List<AccessLibraryForPlugins.PositionOnField> listOfPositionsCanCatchEnemy)
+        {
+            if (base.EnemyIsLowerThanAnimal(rowPositionOfAnimal, rowPositionOfEnemy))
+            {
+                listOfPositionsCanCatchEnemy.AddRange(
+                                            freePositionsOnField
+                                            .Where(p => p.RowPosition > rowPositionOfAnimal)
+                                            );
+            }
+            else
+            {
+                listOfPositionsCanCatchEnemy.AddRange(
+                        freePositionsOnField
+                        .Where(p => p.RowPosition < rowPositionOfAnimal)
+                        );
             }
         }
 
@@ -163,12 +173,12 @@ namespace Savannah.Animals
 
         private bool IsEnemyOnTheSameRow(int rowPositionOfAnimal, int rowPositionOfEnemy)
         {
-            return (rowPositionOfAnimal == rowPositionOfEnemy) ? true : false;
+            return (rowPositionOfAnimal == rowPositionOfEnemy);
         }
 
         private bool IsEnemyOnTheSameColumn(int columnPositionOfAnimal, int columnPositionOfEnemy)
         {
-            return (columnPositionOfAnimal == columnPositionOfEnemy) ? true : false;
+            return (columnPositionOfAnimal == columnPositionOfEnemy);
         }
 
     }

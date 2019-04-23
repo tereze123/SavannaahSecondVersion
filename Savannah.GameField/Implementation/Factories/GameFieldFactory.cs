@@ -11,7 +11,6 @@ namespace Savannah.FieldOfGame.Factories
         private readonly IPositionOnFieldFactory positionOnFieldFactory;
         private readonly IRandomiserFactory randomiserFactory;
 
-        [ImportingConstructor]
         public GameFieldFactory(IConfiguration configuration, IPositionOnFieldFactory positionOnFieldFactory, IRandomiserFactory randomiserFactory)
         {
             this.configuration = configuration;

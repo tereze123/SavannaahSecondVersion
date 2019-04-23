@@ -4,7 +4,9 @@
     {
         public PositionOnField()
         {
-
+            RowPosition = default(int);
+            ColumnPosition = default(int);
+            IsEnemyInViewRange = default(bool);
         }
 
         public PositionOnField(int rowPosition, int columnPosition)

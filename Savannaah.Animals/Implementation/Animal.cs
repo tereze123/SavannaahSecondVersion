@@ -31,7 +31,9 @@ namespace Savannaah.Animals
 
         public int VisionRange { get; set; }
 
-        public virtual AccessLibraryForPlugins.PositionOnField EnemysPositionOnField(IAnimal[,] initialGeneration, int rowPosition, int columnPosition)
+        public virtual AccessLibraryForPlugins.PositionOnField EnemysPositionOnField(IAnimal[,] initialGeneration, 
+            int rowPosition,
+            int columnPosition)
         {
             AccessLibraryForPlugins.PositionOnField positionOnField = positionOnFieldFactory.GetNewPositionOnField(); 
             for (int rowsInVisionRange = VisionRange * -1; rowsInVisionRange <= VisionRange; rowsInVisionRange++)
@@ -58,34 +60,26 @@ namespace Savannaah.Animals
 
         private bool RowAndColumnAreBiggerThanZero(int rowToCheck, int columnToCheck)
         {
-            return (rowToCheck >= 0 && columnToCheck >= 0) ? true : false;
+            return (rowToCheck >= 0 && columnToCheck >= 0);
         }
 
         private bool ThisCellIsNotNull(IAnimal[,] initialGeneration, int rowToCheck, int columnToCheck)
         {
-            return (initialGeneration[rowToCheck, columnToCheck] != null) ? true : false;
+            return (initialGeneration[rowToCheck, columnToCheck] != null);
         }
 
         private bool ThisCellIsValidAndContainsEnemy(IAnimal[,] initialGeneration, int rowToCheck, int columnToCheck)
         {
-            if (
+            return (
                 !(positionOnFieldValidation.IsOutOfBounds(rowToCheck, columnToCheck))
                 && ThisCellIsNotNull(initialGeneration, rowToCheck, columnToCheck)
                 && ThisCellContainsEnemy(initialGeneration, rowToCheck, columnToCheck)
-                )
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+                );
         }
 
         private bool ThisCellContainsEnemy(IAnimal[,] initialGeneration, int rowToCheck, int columnToCheck)
         {
-            return (initialGeneration[rowToCheck, columnToCheck].Name == EnemiesName) ? true : false;
+            return (initialGeneration[rowToCheck, columnToCheck].Name == EnemiesName);
         }
 
         public virtual void EnemyIsInRangeMovementNextPosition(
@@ -161,12 +155,12 @@ namespace Savannaah.Animals
 
         protected bool EnemyIsLowerThanAnimal(int rowPositionAnimal, int rowPositionEnemy)
         {
-            return (rowPositionEnemy > rowPositionAnimal) ? true : false;
+            return (rowPositionEnemy > rowPositionAnimal);
         }
 
         protected bool EnemyIsToTheRightOfAnimal(int columnPositionAnimal, int columnPositionEnemy)
         {
-            return (columnPositionEnemy > columnPositionAnimal) ? true : false;
+            return (columnPositionEnemy > columnPositionAnimal);
         }
 
         public virtual void PeaceStateMovementNextPosition(
@@ -241,19 +235,12 @@ namespace Savannaah.Animals
         {
             if (Name == configuration.GetNameOfLion())
             {
-                if ((gameField[rowPosition, columnPosition] == null)
-                    || EnemyIsHere(gameField, rowPosition, columnPosition))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return ((gameField[rowPosition, columnPosition] == null)
+                    || EnemyIsHere(gameField, rowPosition, columnPosition));
             }
             else
             {
-                return (gameField[rowPosition, columnPosition] == null) ? true : false;
+                return (gameField[rowPosition, columnPosition] == null);
             }
         }
 
