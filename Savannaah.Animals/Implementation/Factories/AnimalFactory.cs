@@ -3,6 +3,8 @@ using Savannah.Common;
 using Savannah.Common.Factories;
 using Savannah.PositionOnField;
 using Savannah.PositionOnField.Factories;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 
 namespace Savannah.Animals.Factories
@@ -24,7 +26,9 @@ namespace Savannah.Animals.Factories
             set { animalTypes = value; }
         }
 
-        public AnimalFactory(IConfiguration configuration, 
+        private List<IAnimal> typesOfAnimalAvailable;
+
+        public AnimalFactory(IConfiguration configuration,
             IPositionOnFieldValidation positionOnFieldValidation,
             IPositionOnFieldFactory positionOnFieldFactory,
             IRandomiserFactory randomiserFactory)
@@ -33,22 +37,38 @@ namespace Savannah.Animals.Factories
             this.positionOnFieldValidation = positionOnFieldValidation;
             this.positionOnFieldFactory = positionOnFieldFactory;
             this.randomiserFactory = randomiserFactory;
+            typesOfAnimalAvailable = new List<IAnimal>();
+
         }
 
         public IAnimal ReturnNewAnimal(string animalName)
         {
-            if (animalName == configuration.GetNameOfAntelope())
+            typesOfAnimalAvailable.Add(animalTypes);
+            Antelope antelope = new Antelope(configuration, positionOnFieldValidation, positionOnFieldFactory, randomiserFactory);
+            Lion lion = new Lion(configuration, positionOnFieldValidation, positionOnFieldFactory, randomiserFactory);
+
+            typesOfAnimalAvailable.Add(antelope);
+            typesOfAnimalAvailable.Add(lion);
+
+            foreach (var animalTyppe in typesOfAnimalAvailable)
             {
-                return new Antelope(configuration, positionOnFieldValidation, positionOnFieldFactory, randomiserFactory);
+
+                if (animalTyppe.Name == animalName)
+                {
+                    if (animalTyppe.Name == configuration.GetNameOfAntelope() || animalTyppe.Name == configuration.GetNameOfLion())
+                    {
+                        return Activator.CreateInstance(animalTyppe.GetType(), configuration,
+                            positionOnFieldValidation, 
+                            positionOnFieldFactory, 
+                            randomiserFactory) as IAnimal;
+                    }
+                    else
+                    {
+                        return Activator.CreateInstance(animalTyppe.GetType()) as IAnimal;
+                    }
+                }
             }
-            else if (animalName == configuration.GetNameOfLion())
-            {
-                return new Lion(configuration, positionOnFieldValidation, positionOnFieldFactory, randomiserFactory);
-            }
-            else
-            {
-                return null;
-            }
+            return null;
         }
     }
 }

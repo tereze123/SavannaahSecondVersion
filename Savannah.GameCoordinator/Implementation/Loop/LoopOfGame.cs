@@ -1,5 +1,4 @@
 ﻿using AccessLibraryForPlugins.Animals;
-using Savannaah.Animals;
 using Savannah.Animals.Factories;
 using Savannah.Common;
 using Savannah.FieldOfGame;
@@ -14,8 +13,8 @@ namespace Savannah.GameCoordinator.Loop
         private readonly IAnimalFactory animalFactory;
         private readonly IPositionOnFieldFactory positionOnFieldFactory;
 
-        public LoopOfGame(FieldOfGame.IGameField gameField, 
-            IConfiguration configuration, 
+        public LoopOfGame(FieldOfGame.IGameField gameField,
+            IConfiguration configuration,
             IAnimalFactory animalFactory,
             IPositionOnFieldFactory positionOnFieldFactory)
         {
@@ -48,41 +47,35 @@ namespace Savannah.GameCoordinator.Loop
             positionOfEnemy = gameField.GameState[row, column].EnemysPositionOnField(gameField.GameState, row, column);
             if (positionOfEnemy.IsEnemyInViewRange)
             {
-                    gameField.GameState[row, column].EnemyIsInRangeMovementNextPosition(
-                    gameField.GameState,
-                    nextGenerationArray,
-                    positionOfEnemy.RowPosition,
-                    positionOfEnemy.ColumnPosition,
-                    row,
-                    column);
+                gameField.GameState[row, column].EnemyIsInRangeMovementNextPosition(
+                gameField.GameState,
+                nextGenerationArray,
+                positionOfEnemy.RowPosition,
+                positionOfEnemy.ColumnPosition,
+                row,
+                column);
             }
             else
             {
-                    gameField.GameState[row, column].PeaceStateMovementNextPosition(gameField.GameState,
-                    nextGenerationArray, row, column);
+                gameField.GameState[row, column].PeaceStateMovementNextPosition(gameField.GameState,
+                nextGenerationArray, row, column);
             }
         }
 
         public void UsersTurnToAddAnimals(IGameField gameField, string userKeyPressed)
         {
-            if (userKeyPressed == configuration.GetNameOfAntelope())
+
+            IAnimal animal = animalFactory.ReturnNewAnimal(userKeyPressed);
+            if (animal != null)
             {
-                IAnimal antilope = animalFactory.ReturnNewAnimal(configuration.GetNameOfAntelope());
                 AccessLibraryForPlugins.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
                 if (randomAndFreePosOnField != null)
                 {
-                    gameField.GameState[randomAndFreePosOnField.RowPosition, randomAndFreePosOnField.ColumnPosition] = antilope;
-                }
-            }
-            else if (userKeyPressed == configuration.GetNameOfLion())
-            {
-                IAnimal lion = animalFactory.ReturnNewAnimal(configuration.GetNameOfLion());
-                AccessLibraryForPlugins.PositionOnField randomAndFreePosOnField = gameField.GetRandomAndFreePositionOnField();
-                if (randomAndFreePosOnField != null)
-                {
-                    gameField.GameState[randomAndFreePosOnField.RowPosition, randomAndFreePosOnField.ColumnPosition] = lion;
+                    gameField.GameState[randomAndFreePosOnField.RowPosition, randomAndFreePosOnField.ColumnPosition] = animal;
+
                 }
             }
         }
     }
 }
+

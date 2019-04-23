@@ -13,14 +13,14 @@ namespace Savannah.GameCoordinator
         private readonly ILoopOfGame loopOfGame;
         private readonly IUserInput userInput;
         private readonly IGameFieldDrawer gameFieldDrawer;
-        private FieldOfGame.IGameField gameField;
-        private IConfiguration configuration;
+        private readonly FieldOfGame.IGameField gameField;
+        private readonly IConfiguration configuration;
         private readonly IAnimalFactory animalFactory;
         private readonly ILoopOfGameFactory loopOfGameFactory;
 
         [ImportingConstructor]
-        public GameManager(IUserInput userInput, 
-                           IGameFieldDrawer gameFieldDrawer, 
+        public GameManager(IUserInput userInput,
+                           IGameFieldDrawer gameFieldDrawer,
                            IConfiguration configuration,
                            IAnimalFactory animalFactory,
                            IGameFieldFactory gameFieldFactory,
@@ -29,8 +29,8 @@ namespace Savannah.GameCoordinator
             this.configuration = configuration;
             this.animalFactory = animalFactory;
             this.loopOfGameFactory = loopOfGameFactory;
-            this.gameField = gameFieldFactory.GetGameField();
-            this.loopOfGame = loopOfGameFactory.GetLoopOfGame(gameField);
+            gameField = gameFieldFactory.GetGameField();
+            loopOfGame = loopOfGameFactory.GetLoopOfGame(gameField);
             this.userInput = userInput;
             this.gameFieldDrawer = gameFieldDrawer;
         }
@@ -44,12 +44,8 @@ namespace Savannah.GameCoordinator
                 if (userInput.IsKeyPressed())
                 {
                     userKeyPressed = userInput.ReturnKeyPressed();
-
-                    if (userKeyPressed == configuration.GetNameOfAntelope() || userKeyPressed == configuration.GetNameOfLion())
-                    {
-                        loopOfGame.UsersTurnToAddAnimals(gameField, userKeyPressed);
-                        gameFieldDrawer.DrawGameField(gameField);
-                    }
+                    loopOfGame.UsersTurnToAddAnimals(gameField, userKeyPressed);
+                    gameFieldDrawer.DrawGameField(gameField);
                 }
                 loopOfGame.LoopThroughTheGame();
                 Thread.Sleep(500);

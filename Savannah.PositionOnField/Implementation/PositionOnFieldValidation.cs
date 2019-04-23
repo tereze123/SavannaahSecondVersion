@@ -15,18 +15,18 @@ namespace Savannah.PositionOnField
         {
             int fieldSize = configuration.GetGameFieldSize();
             return (IsPositionRowOrColumnLessThanZero(rowNumber, colNumber)
-                    || IsPositionRowOrColumnMoreOrEqualToFieldSize(rowNumber, colNumber, fieldSize)) ? true : false;
+                    || IsPositionRowOrColumnMoreOrEqualToFieldSize(rowNumber, colNumber, fieldSize));
         }
 
         private bool IsPositionRowOrColumnLessThanZero(int rowNumber, int colNumber)
         {
-            return (rowNumber < 0 || colNumber < 0) ? true : false;
+            return (rowNumber < 0 || colNumber < 0);
         }
 
         private bool IsPositionRowOrColumnMoreOrEqualToFieldSize(int rowNumber, int colNumber, int fieldSize)
         {
             return (rowNumber >= fieldSize
-                || colNumber >= fieldSize) ? true : false;
+                || colNumber >= fieldSize);
         }
     }
 }
