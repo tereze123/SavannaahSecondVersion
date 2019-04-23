@@ -17,11 +17,8 @@ namespace Savannah.InputAndOutput
         public string ReturnKeyPressed()
         {
             ConsoleKeyInfo consoleKeyInfo;
-            do
-            {
                 consoleKeyInfo = Console.ReadKey(true);
                 return consoleKeyInfo.Key.ToString();
-            } while (consoleKeyInfo.Key != ConsoleKey.Escape);
         }
 
         public bool IsKeyPressed()

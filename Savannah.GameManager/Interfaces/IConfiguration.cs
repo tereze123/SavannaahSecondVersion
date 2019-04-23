@@ -5,5 +5,7 @@
         int GetGameFieldSize();
         string GetNameOfAntelope();
         string GetNameOfLion();
+        string GetNameOfExitKey();
+        string GetAssemblyPath();
     }
 }

@@ -4,7 +4,6 @@ using Savannah.FieldOfGame.Factories;
 using Savannah.GameCoordinator.Factories;
 using Savannah.GameCoordinator.Loop;
 using Savannah.InputAndOutput;
-using System.ComponentModel.Composition;
 using System.Threading;
 namespace Savannah.GameCoordinator
 {
@@ -18,7 +17,6 @@ namespace Savannah.GameCoordinator
         private readonly IAnimalFactory animalFactory;
         private readonly ILoopOfGameFactory loopOfGameFactory;
 
-        [ImportingConstructor]
         public GameManager(IUserInput userInput,
                            IGameFieldDrawer gameFieldDrawer,
                            IConfiguration configuration,
@@ -44,14 +42,27 @@ namespace Savannah.GameCoordinator
                 if (userInput.IsKeyPressed())
                 {
                     userKeyPressed = userInput.ReturnKeyPressed();
-                    loopOfGame.UsersTurnToAddAnimals(gameField, userKeyPressed);
-                    gameFieldDrawer.DrawGameField(gameField);
+                    if (userKeyPressed == configuration.GetNameOfExitKey())
+                    {
+                        break;
+                    }
+                    UserAddsAnimalToField(userKeyPressed);
                 }
-                loopOfGame.LoopThroughTheGame();
-                Thread.Sleep(500);
-                gameFieldDrawer.DrawGameField(gameField);
-            } while (userKeyPressed != "ESC");
+                AnimalsMove();
+            } while (true);
         }
 
+        private void AnimalsMove()
+        {
+            loopOfGame.LoopThroughTheGame();
+            Thread.Sleep(500);
+            gameFieldDrawer.DrawGameField(gameField);
+        }
+
+        private void UserAddsAnimalToField(string userKeyPressed)
+        {
+            loopOfGame.UsersTurnToAddAnimals(gameField, userKeyPressed);
+            gameFieldDrawer.DrawGameField(gameField);
+        }
     }
 }

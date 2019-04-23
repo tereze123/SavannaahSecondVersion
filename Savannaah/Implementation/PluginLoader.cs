@@ -1,4 +1,5 @@
 ﻿using Savannah.Animals.Factories;
+using Savannah.Common;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 
@@ -6,9 +7,16 @@ namespace Savannah.Client
 {
     public class PluginLoader
     {
+        private readonly IConfiguration configuration;
+
+        public PluginLoader(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
         public void LoadPlugins(IAnimalFactory animalFactory)
         {
-            DirectoryCatalog catalog = new DirectoryCatalog(@"C:\Users\tereze.elize.empele\source\repos\ForPluginTest\ForPluginTest\bin\Debug\netcoreapp2.1", "*.dll");
+            var path = configuration.GetAssemblyPath();
+            DirectoryCatalog catalog = new DirectoryCatalog(path, "*.dll");
             var container = new CompositionContainer(catalog);
             container.ComposeParts(animalFactory);
         }

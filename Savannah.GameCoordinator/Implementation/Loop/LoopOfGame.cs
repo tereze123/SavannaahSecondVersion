@@ -72,7 +72,6 @@ namespace Savannah.GameCoordinator.Loop
                 if (randomAndFreePosOnField != null)
                 {
                     gameField.GameState[randomAndFreePosOnField.RowPosition, randomAndFreePosOnField.ColumnPosition] = animal;
-
                 }
             }
         }

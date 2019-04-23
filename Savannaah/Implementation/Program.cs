@@ -27,7 +27,7 @@ namespace Savannaah
             IGameField gameField = gameFieldFactory.GetGameField();
             ILoopOfGameFactory loopOfGameFactory = new LoopOfGameFactory(configuration, animalFactory, positionOnFieldFactory);
 
-            PluginLoader pluginLoader = new PluginLoader();
+            PluginLoader pluginLoader = new PluginLoader(configuration);
             pluginLoader.LoadPlugins(animalFactory);
 
             GameManager gameManager = new GameManager(userInput, gameFieldDrawer, configuration, animalFactory, gameFieldFactory, loopOfGameFactory);

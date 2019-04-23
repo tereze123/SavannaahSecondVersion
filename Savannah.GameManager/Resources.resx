@@ -120,6 +120,12 @@
   <data name="AntelopeName" xml:space="preserve">
     <value>A</value>
   </data>
+  <data name="AssemblyPath" xml:space="preserve">
+    <value>C:\\Users\\tereze.elize.empele\\source\\repos\\ForPluginTest\\ForPluginTest\\bin\\Debug\\netcoreapp2.1</value>
+  </data>
+  <data name="ExitGameKey" xml:space="preserve">
+    <value>Escape</value>
+  </data>
   <data name="FieldSize" xml:space="preserve">
     <value>10</value>
   </data>

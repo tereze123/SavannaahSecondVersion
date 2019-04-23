@@ -70,6 +70,24 @@ namespace Savannah.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C:\\Users\\tereze.elize.empele\\source\\repos\\ForPluginTest\\ForPluginTest\\bin\\Debug\\netcoreapp2.1.
+        /// </summary>
+        internal static string AssemblyPath {
+            get {
+                return ResourceManager.GetString("AssemblyPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Escape.
+        /// </summary>
+        internal static string ExitGameKey {
+            get {
+                return ResourceManager.GetString("ExitGameKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 10.
         /// </summary>
         internal static string FieldSize {

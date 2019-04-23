@@ -15,5 +15,15 @@
         {
             return Resources.AntelopeName;
         }
+
+        public string GetNameOfExitKey()
+        {
+            return Resources.ExitGameKey;
+        }
+
+        public string GetAssemblyPath()
+        {
+            return Resources.AssemblyPath;
+        }
     }
 }
