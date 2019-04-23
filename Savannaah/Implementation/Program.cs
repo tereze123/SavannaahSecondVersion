@@ -4,7 +4,6 @@ using Savannah.Common;
 using Savannah.Common.Factories;
 using Savannah.FieldOfGame;
 using Savannah.FieldOfGame.Factories;
-using Savannah.GameCoordinator;
 using Savannah.GameCoordinator.Factories;
 using Savannah.InputAndOutput;
 using Savannah.PositionOnField;

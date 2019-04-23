@@ -1,5 +1,4 @@
 ﻿using AccessLibraryForPlugins.Animals;
-using Savannaah.Animals;
 using Savannah.Common;
 using Savannah.Common.Facades;
 using Savannah.Common.Factories;

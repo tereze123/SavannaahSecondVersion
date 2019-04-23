@@ -1,5 +1,4 @@
-﻿
-using Savannah.Common;
+﻿using Savannah.Common;
 using System.ComponentModel.Composition;
 
 namespace Savannah.PositionOnField

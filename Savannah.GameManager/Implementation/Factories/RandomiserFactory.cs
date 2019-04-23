@@ -1,5 +1,4 @@
 ﻿using Savannah.Common.Facades;
-using System.ComponentModel.Composition;
 
 namespace Savannah.Common.Factories
 {

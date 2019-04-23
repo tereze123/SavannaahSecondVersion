@@ -1,5 +1,4 @@
-﻿
-using AccessLibraryForPlugins.Animals;
+﻿using AccessLibraryForPlugins.Animals;
 using System.Collections.Generic;
 
 namespace Savannah.FieldOfGame

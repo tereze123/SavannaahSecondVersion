@@ -1,14 +1,10 @@
 ﻿using Savannah.Animals.Factories;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
-using System.Reflection;
-using System.Text;
 
 namespace Savannah.Client
 {
-   public class PluginLoader
+    public class PluginLoader
     {
         public void LoadPlugins(IAnimalFactory animalFactory)
         {
