@@ -1,5 +1,6 @@
 ﻿using Savannah.Animals.Factories;
 using Savannah.Client;
+using Savannah.Client.Implementation;
 using Savannah.Common;
 using Savannah.Common.Factories;
 using Savannah.FieldOfGame;
@@ -16,24 +17,12 @@ namespace Savannaah
     {
         static void Main(string[] args)
         {
-            IConfiguration configuration = new Configuration();
-            IRandomiserFactory randomiserFactory = new RandomiserFactory();
-            IUserInput userInput = new UserInputForConsole(configuration);
-            IPositionOnFieldFactory positionOnFieldFactory = new PositionOnFieldFactory();
-            IGameFieldDrawer gameFieldDrawer = new GameFieldDrawerForConsole();
-            IPositionOnFieldValidation positionOnFieldValidation = new PositionOnFieldValidation(configuration);
-            IAnimalFactory animalFactory = new AnimalFactory(configuration, positionOnFieldValidation, positionOnFieldFactory, randomiserFactory);
-            IGameFieldFactory gameFieldFactory = new GameFieldFactory(configuration, positionOnFieldFactory, randomiserFactory);
-            IGameField gameField = gameFieldFactory.GetGameField();
-            ILoopOfGameFactory loopOfGameFactory = new LoopOfGameFactory(configuration, animalFactory, positionOnFieldFactory);
+            UnityDependencyRegistration unityDependencyRegistration = new UnityDependencyRegistration();
 
-            PluginLoader pluginLoader = new PluginLoader(configuration);
-            pluginLoader.LoadPlugins(animalFactory);
+            unityDependencyRegistration.RegisterTypes();
 
-            GameManager gameManager = new GameManager(userInput, gameFieldDrawer, configuration, animalFactory, gameFieldFactory, loopOfGameFactory);
+            var gameManager = unityDependencyRegistration.GetGameManager();
             gameManager.Start();
         }
-
-
     }
 }

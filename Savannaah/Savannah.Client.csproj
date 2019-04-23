@@ -21,6 +21,8 @@
 
   <ItemGroup>
     <PackageReference Include="System.ComponentModel.Composition" Version="4.5.0" />
+    <PackageReference Include="Unity" Version="5.10.3" />
+    <PackageReference Include="Unity.Microsoft.DependencyInjection" Version="5.10.2" />
   </ItemGroup>
 
 </Project>

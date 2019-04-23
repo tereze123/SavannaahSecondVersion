@@ -35,6 +35,8 @@ namespace Savannah.GameCoordinator
 
         public void Start()
         {
+            PluginLoader pluginLoader = new PluginLoader(configuration);
+            pluginLoader.LoadPlugins(animalFactory);
             string userKeyPressed = string.Empty;
             gameFieldDrawer.DrawGameField(gameField);
             do

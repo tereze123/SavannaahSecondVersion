@@ -3,7 +3,7 @@ using Savannah.Common;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 
-namespace Savannah.Client
+namespace Savannah.GameCoordinator
 {
     public class PluginLoader
     {
