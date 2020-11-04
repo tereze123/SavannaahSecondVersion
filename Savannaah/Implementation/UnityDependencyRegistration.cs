@@ -34,7 +34,7 @@ namespace Savannah.Client.Implementation
             container.RegisterType<IGameFieldFactory, GameFieldFactory>();
             container.RegisterType<GameManager, GameManager>(new ContainerControlledLifetimeManager());
             container.RegisterType<ILoopOfGameFactory, LoopOfGameFactory>();
-        }
+        }wefwefewfwefwe
 
         public GameManager GetGameManager()
         {
